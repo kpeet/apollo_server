@@ -1,4 +1,3 @@
-
 const cursos = [
     {
         titulo: 'JavaScript Moderno Guía Definitiva Construye +10 Proyectos',
@@ -18,10 +17,16 @@ const cursos = [
     }
 ];
 //Resolvers
-const resolvers= {
-    Query:{
-        obtenerCursos: () => cursos,
-    obtenerTecnologia: () => cursos
+const resolvers = {
+    Query: {
+        obtenerCursos: (_, {input}, ctx, info) => {
+            console.log(input);
+            const resultado = cursos.filter(curso => curso.tecnologia == input.tecnologia)
+
+            return resultado
+
+    },
+        obtenerTecnologia: () => cursos
 }
 }
 
