@@ -12,6 +12,15 @@ npm i apollo-server
 npm i -D nodemon
 
 
+Para Integración con MongoDB
+
+
+dotend: variables de entorno  
+
+mongoose: ORM para node
+
+npm i mongoose dotenv
+
 
 apollo-server: servidor para Graphql
 nodemon: .va a ir reiniciando el servidor a medida que cambian los archivos en desarrollo (-D)
