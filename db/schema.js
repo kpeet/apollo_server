@@ -11,13 +11,22 @@ const typeDefs = gql`
             email: String
             crado: String
         }
+        
+        
+        input UsuarioInput {
+             nombre: String!
+            apellido: String!
+            email: String!
+            password: String!
+        }
+        
 
 
         type Query {
             obtenerCursos: String
         }
         type Mutation {
-            nuevoUsuario : String 
+            nuevoUsuario(input: UsuarioInput): String 
         }
         
 `;
