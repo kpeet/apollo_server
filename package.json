@@ -1,0 +1,18 @@
+{
+  "name": "crmgraphqlcurso",
+  "version": "1.0.0",
+  "description": "curso de graphql",
+  "main": "index.js",
+  "scripts": {
+    "start": "node .",
+    "dev": "nodemon ."
+  },
+  "author": "Kenneth Peet D.",
+  "license": "ISC",
+  "dependencies": {
+    "apollo-server": "^2.13.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.4"
+  }
+}
