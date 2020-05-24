@@ -6,13 +6,13 @@ Drive con notas:
 https://docs.google.com/document/d/1CKY-8mB04oXUTVAQJ5cYIuCC-9pB93AI0m9QsA6CwsA/edit
 
 
-Inicio de proyecto
+###Inicio de proyecto
 npm init
 npm i apollo-server
 npm i -D nodemon
 
 
-Para Integración con MongoDB
+###Para Integración con MongoDB
 
 
 dotend: variables de entorno  
@@ -20,6 +20,10 @@ dotend: variables de entorno
 mongoose: ORM para node
 
 npm i mongoose dotenv
+
+##JSON WEB TOKEN
+
+npm i jsonwebtoken
 
 
 apollo-server: servidor para Graphql

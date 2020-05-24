@@ -1,15 +1,25 @@
 const Usuario = require('../models/Usuario');
 const bcryptjs = require('bcryptjs');
+const jwt = require('jsonwebtoken');
 
 
 
-const crearToken = (usuario, secreta, expiracion){
+const crearToken = (usuario, secreta, expiresIn) => {
+    console.log(usuario);
+    const {id, email, nombre, apellido} = usuario;
+
+
+    return jwt.sign({id, email, nombre, apellido}, secreta,{expiresIn})
 
 }
 //Resolvers
 const resolvers = {
     Query: {
-        obtenerCursos: () => "Algo"
+        obtenerUsuario: async(_, {token}) =>{
+            const usuarioId = await jwt.verify(token,process.env.SECRETA )
+
+            return usuarioId
+        }
     },
     Mutation: {
         nuevoUsuario: async (_, {input}) => {
@@ -22,8 +32,6 @@ const resolvers = {
             if (existeUsuario){
                 throw new Error('El usuario ya está registrado')
             }
-
-
 
             //Hashear su password
             const salt = await bcryptjs.genSalt(10);
@@ -42,14 +50,6 @@ const resolvers = {
                 console.log("FLAG 5");
 
             }
-
-
-
-
-
-
-
-
              return "Creando ....";
         },
 
@@ -57,7 +57,7 @@ const resolvers = {
 
             const {email, password} = input;
 
-            /Si existe usuario
+            //Si existe usuario
             const existeUsario = await Usuario.findOne({email});
             if(!existeUsario){
                 throw new Error('el usuario no existe')
