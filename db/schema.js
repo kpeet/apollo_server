@@ -12,10 +12,17 @@ const typeDefs = gql`
             crado: String
         }
         
+        type Token{
+        token: String
+        
         
         input UsuarioInput {
              nombre: String!
             apellido: String!
+            email: String!
+            password: String!
+        }
+        input AutenticarInput {
             email: String!
             password: String!
         }
@@ -26,7 +33,8 @@ const typeDefs = gql`
             obtenerCursos: String
         }
         type Mutation {
-            nuevoUsuario(input: UsuarioInput): String 
+            nuevoUsuario(input: UsuarioInput): Usuario 
+            autenticarUsuario(input: AutenticarInput): Token
         }
         
 `;
