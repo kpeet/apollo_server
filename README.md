@@ -26,6 +26,13 @@ npm i mongoose dotenv
 npm i jsonwebtoken
 
 
+##comunicacion rest 
+https://www.apollographql.com/docs/apollo-server/data/data-sources/
+
+npm install apollo-datasource-rest
+
+###
+
 apollo-server: servidor para Graphql
 nodemon: .va a ir reiniciando el servidor a medida que cambian los archivos en desarrollo (-D)
 
