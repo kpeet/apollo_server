@@ -1,5 +1,7 @@
 const Usuario = require('../models/Usuario');
 const Producto = require('../models/Producto');
+const Company = require('../models/Company');
+const CompanyRest = require('../models/CompanyRest');
 const bcryptjs = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 
@@ -30,7 +32,18 @@ const resolvers = {
             }catch(error){
                 console.log(error);
             }
-        }
+        },
+        getAccount: async (_source, { id }, { dataSources }) => {
+            return dataSources.SRMAPI.getAccount(id);
+        },
+        accountlist: async (_source, { id }, { dataSources }) => {
+            console.log("Account List")
+            return dataSources.SRMAPI.listAccounts();
+        },
+
+
+
+
     },
     Mutation: {
         nuevoUsuario: async (_, {input}) => {
@@ -92,6 +105,21 @@ const resolvers = {
 
                 //Almacenar en db
                 const resultado = await producto.save();
+
+
+                return resultado;
+            }catch(error){
+
+            }
+        },
+
+
+        newCompany: async (_, {input}) => {
+            try{
+                const company = new Company(input);
+
+                //Almacenar en db
+                const resultado = await company.save();
 
 
                 return resultado;

@@ -2,7 +2,8 @@ const {ApolloServer} = require('apollo-server');
 const typeDefs = require('./db/schema');
 const resolvers = require('./db/resolvers');
 const jwt = require('jsonwebtoken');
-
+const SRMAPI = require('./models/CompanyRest');
+require('dotenv').config({path: 'variables.env'});
 const conectarDB = require('./config/db');
 
 
@@ -13,6 +14,22 @@ conectarDB();
 const server = new ApolloServer({
     typeDefs,
     resolvers,
+    dataSources: () => {
+        console.log("SRMAPI")
+        try{
+            return {
+                SRMAPI: new SRMAPI(),
+            };
+
+        }catch(error){
+            console.log("ERROR");
+            console.log(error);
+            return {
+                SRMAPI: new SRMAPI(),
+            };
+        }
+
+    },
     context: ({req}) => {
         console.log("Por Aqui");
         const token = req.headers['autorization'] || '';

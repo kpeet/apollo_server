@@ -23,6 +23,25 @@ const typeDefs = gql`
             precio: Float
             creado: String
         }
+        type Company {
+            id: ID
+            nombre: String
+            creado: String
+        }
+        type Account {
+            id: ID
+            name: String
+            external_account_type: Int
+            external_account_id: Int
+            owner: Int
+        }
+        
+        type AccountInput {
+            name: String
+            external_account_type: Int
+            external_account_id: Int
+            owner: Int
+        }
         
         
         input UsuarioInput {
@@ -36,6 +55,9 @@ const typeDefs = gql`
             existencia: Int!
             precio: Float!
         }
+        input CompanyInput {
+            nombre: String!
+        }
         input AutenticarInput {
             email: String!
             password: String!
@@ -48,6 +70,10 @@ const typeDefs = gql`
             ##Producto
             obtenerProductos: [Producto]
             
+            ##Company
+            accountlist: [Account]
+            getAccount: Account
+            
         }
         type Mutation {
             ##Usuarios
@@ -56,6 +82,10 @@ const typeDefs = gql`
             
             ##Productos
             nuevoProducto(input: ProductoInput): Producto
+            
+            
+            ##Company
+            newCompany(input: CompanyInput): Company
         }
         
 `;
