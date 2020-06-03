@@ -1,4 +1,5 @@
 - name: Deploy Development
+  tag: "devel"
   service: awsdeployment
   command: serverless deploy --stage development
 
@@ -8,6 +9,6 @@
   command: serverless deploy --stage staging
 
 - name: Deploy Production
-  tag: "^master"
+  tag: "master"
   service: awsdeployment
   command: serverless deploy --stage production
