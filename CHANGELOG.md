@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 ### DevOps
-- Add docker support
-- New folder structure
-- Add CI/CD from codeship
+- Add docker support [(1)]
+- New folder structure [(1)]
+- Add CI/CD from codeship [(1)]
+
+[Unreleased]: https://bitbucket.org/cumplo/srm-apollo-server/branches/compare/devel..#diff
+
+[(1)]: https://bitbucket.org/cumplo/srm-apollo-server/pull-requests/1/
