@@ -2,7 +2,8 @@ const {ApolloServer} = require('apollo-server');
 const typeDefs = require('./db/schema');
 const resolvers = require('./db/resolvers');
 const jwt = require('jsonwebtoken');
-const SRMAPI = require('./models/CompanyRest');
+const CompanyRest = require('./models/CompanyRest');
+const SrmRest = require('./models/SrmRest');
 require('dotenv').config({path: 'variables.env'});
 const conectarDB = require('./config/db');
 
@@ -15,18 +16,16 @@ const server = new ApolloServer({
     typeDefs,
     resolvers,
     dataSources: () => {
-        console.log("SRMAPI")
+        console.log("AccountEngineAPI")
         try{
             return {
-                SRMAPI: new SRMAPI(),
+                SRMAPI: new CompanyRest(),
+                SrmRest: new SrmRest(),
             };
 
         }catch(error){
             console.log("ERROR");
             console.log(error);
-            return {
-                SRMAPI: new SRMAPI(),
-            };
         }
 
     },

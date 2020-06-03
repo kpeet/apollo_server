@@ -2,6 +2,8 @@ const Usuario = require('../models/Usuario');
 const Producto = require('../models/Producto');
 const Company = require('../models/Company');
 const CompanyRest = require('../models/CompanyRest');
+const SrmRest = require('../models/SrmRest');
+
 const bcryptjs = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 
@@ -34,11 +36,11 @@ const resolvers = {
             }
         },
         getAccount: async (_source, { id }, { dataSources }) => {
-            return dataSources.SRMAPI.getAccount(id);
+            return dataSources.CompanyRest.getAccount(id);
         },
         accountlist: async (_source, { id }, { dataSources }) => {
             console.log("Account List")
-            return dataSources.SRMAPI.listAccounts();
+            return dataSources.CompanyRest.listAccounts();
         },
 
 
@@ -46,7 +48,31 @@ const resolvers = {
 
     },
     Mutation: {
-        nuevoUsuario: async (_, {input}) => {
+        nuevoUsuario: async (_source, { input }, { dataSources }) => {
+            const new_user = {
+                "username": input.email,
+                "password": input.password,
+                "email": input.email,
+                "first_name": input.nombre,
+                "last_name": input.apellido
+
+            }
+
+            return dataSources.SrmRest.newAUserRegister(new_user)
+        },
+
+        autenticarUsuario: async (_source, { input }, { dataSources }) => {
+            const new_user = {
+                "username": input.email,
+                "password": input.password
+
+            }
+
+            return dataSources.SrmRest.login(new_user)
+        },
+
+        /*
+        nuevoUsuarioMongoDb: async (_, {input}) => {
 
             const { email, password} = input;
 
@@ -74,10 +100,11 @@ const resolvers = {
                 console.log("FLAG 5");
 
             }
-             return "Creando ....";
+            return "Creando ....";
         },
-
-        autenticarUsuario: async (_ , {input})=>{
+*/
+        /*
+        autenticarUsuarioMongoDb: async (_ , {input})=>{
 
             const {email, password} = input;
 
@@ -99,6 +126,8 @@ const resolvers = {
                 token: crearToken(existeUsario, process.env.SECRETA, '24h')
             }
         },
+        */
+
         nuevoProducto: async (_, {input}) => {
             try{
                 const producto = new Producto(input);

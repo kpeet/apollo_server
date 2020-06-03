@@ -1,7 +1,7 @@
 const { RESTDataSource } = require('apollo-datasource-rest');
 
 
-class SRMAPI extends RESTDataSource{
+class AccountEngineAPI extends RESTDataSource{
     constructor(){
         super();
         this.baseURL='http://localhost:8007/'
@@ -32,4 +32,4 @@ class SRMAPI extends RESTDataSource{
         );
     }
 }
-module.exports = SRMAPI;
+module.exports = AccountEngineAPI;
