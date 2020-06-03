@@ -8,3 +8,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### DevOps
 - Add docker support
 - New folder structure
+- Add CI/CD from codeship
