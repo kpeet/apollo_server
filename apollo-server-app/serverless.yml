@@ -1,0 +1,23 @@
+# serverless.yml
+
+service: srm-apollo
+provider:
+  name: aws
+  runtime: nodejs12.x
+  region: us-west-2
+  stage: ${opt:stage, 'development'}
+  environment:
+    DB_MONGO: "mongodb+srv://kpeet:9oBRFpZC3DSF4c16@cluster0-ezcge.mongodb.net/CRMGraphql"
+    SECRETA: "palabrasecreta"
+functions:
+  graphql:
+    handler: server.graphqlHandler
+    events:
+    - http:
+        path: graphql
+        method: post
+        cors: true
+    - http:
+        path: graphql
+        method: get
+        cors: true

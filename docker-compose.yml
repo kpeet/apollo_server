@@ -1,0 +1,14 @@
+version: '3'
+services:
+  apollo:
+    build: .
+    ports:
+      - "4001:4000"
+  redis:
+    image: bitnami/redis:latest
+    environment:
+      - ALLOW_EMPTY_PASSWORD=yes
+    expose:
+      - 6379
+    ports:
+      - "6379:6379"

@@ -1,0 +1,14 @@
+- name: Deploy Development
+  tag: "devel"
+  service: awsdeployment
+  command: serverless deploy --stage development
+
+- name: Deploy Staging
+  tag: "^(release/.*|hotfix/.*)$"
+  service: awsdeployment
+  command: serverless deploy --stage staging
+
+- name: Deploy Production
+  tag: "master"
+  service: awsdeployment
+  command: serverless deploy --stage production
