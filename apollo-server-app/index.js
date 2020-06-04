@@ -1,18 +1,21 @@
 const {ApolloServer} = require('apollo-server');
-const typeDefs = require('./db/schema');
-const resolvers = require('./db/resolvers');
+const typeDefs = require('./src/typeDefs/schema');
+const resolvers = require('./src/resolvers/resolvers');
 const jwt = require('jsonwebtoken');
 
 const conectarDB = require('./config/db');
+//Carga de controladores
+const controller = require('./src/controllers/controller');
 
 
 //Conectar a la base de datos
 conectarDB();
 
+
 //servidor
 const server = new ApolloServer({
-    typeDefs,
-    resolvers,
+    typeDefs:[controller.typeDefs],
+    resolvers : [controller.resolvers],
     context: ({req}) => {
         console.log("Por Aqui");
         const token = req.headers['autorization'] || '';

@@ -12,6 +12,8 @@ const crearToken = (usuario, secreta, expiresIn) => {
     return jwt.sign({id, email, nombre, apellido}, secreta,{expiresIn})
 
 }
+
+
 //Resolvers
 const resolvers = {
     Query: {
