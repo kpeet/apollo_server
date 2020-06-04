@@ -1,8 +1,9 @@
 const resolvers  = require('./../resolvers/resolvers');
-const  typeDefs  = require('./../typeDefs/schema');
-const  SRMAPI = require('../models/models');
+const  typeDefs  = require('../typeDefs/LoginSchema');
+const  SRMAPI = require('../models/ApiSrmModels');
 
 //Controller
+
 const controller = {
     resolvers,
     "typeDefs": typeDefs,

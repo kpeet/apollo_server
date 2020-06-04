@@ -10,7 +10,6 @@ class SRMAPI extends RESTDataSource {
     //LOGIN
     // an example making an HTTP POST request
     async login(email, password) {
-        console.log("INICIANDO LOGIN");
 
         const payload = {
             "username": email,
@@ -27,7 +26,6 @@ class SRMAPI extends RESTDataSource {
     }
 
     //CREAR USUARIOS
-    // an example making an HTTP POST request
     async userRegister(nombre, apellido, email, password) {
         console.log("INICIANDO userRegister");
         const payload = {
@@ -46,16 +44,6 @@ class SRMAPI extends RESTDataSource {
         console.log(user_login);
 
         return user_login
-    }
-
-
-    async getUsers(id) {
-        return this.get(`accounts/${id}/`);
-    }
-
-    async listAccounts() {
-        const data = await this.get('accounts/');
-        return data.results;
     }
 
 }

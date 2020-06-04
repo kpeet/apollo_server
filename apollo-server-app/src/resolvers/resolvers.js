@@ -1,27 +1,8 @@
-const Usuario = require('../models/Usuario');
-const bcryptjs = require('bcryptjs');
-const jwt = require('jsonwebtoken');
-
-
-
-const crearToken = (usuario, secreta, expiresIn) => {
-    console.log(usuario);
-    const {id, email, nombre, apellido} = usuario;
-
-
-    return jwt.sign({id, email, nombre, apellido}, secreta,{expiresIn})
-
-}
-
 
 //Resolvers
 const resolvers = {
     Query: {
-        obtenerUsuario: async(_, {token}) =>{
-            const usuarioId =  jwt.verify(token,process.env.SECRETA )
 
-            return usuarioId
-        }
     },
     Mutation: {
         nuevoUsuario: async (_source, { input }, { dataSources }) => {

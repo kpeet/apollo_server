@@ -1,13 +1,8 @@
 const {ApolloServer} = require('apollo-server');
-const typeDefs = require('./src/typeDefs/schema');
-const resolvers = require('./src/resolvers/resolvers');
 const jwt = require('jsonwebtoken');
+const controller = require('./src/controllers/LoginController');
 
-const controller = require('./src/controllers/controller');
 
-console.log("controller")
-console.log(JSON.stringify(controller))
-console.log(controller)
 //servidor
 const server = new ApolloServer({
     typeDefs:[controller.typeDefs],
@@ -29,7 +24,6 @@ const server = new ApolloServer({
 
     },
     context: ({req}) => {
-        console.log("Por Aqui");
         const token = req.headers['autorization'] || '';
         if(token){
             try{
@@ -44,7 +38,6 @@ const server = new ApolloServer({
                 console.log(error)
             }
         }
-        console.log(token);
 
     }
 });
