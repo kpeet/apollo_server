@@ -1,11 +1,12 @@
-const { resolvers } = require('./../resolvers/resolvers');
-const { typeDefs } = require('./../typeDefs/schema');
-
+const resolvers  = require('./../resolvers/resolvers');
+const  typeDefs  = require('./../typeDefs/schema');
+const  SRMAPI = require('../models/models');
 
 //Controller
 const controller = {
-    "resolvers ":resolvers,
-    "typeDefs": typeDefs
+    resolvers,
+    "typeDefs": typeDefs,
+    "dataSources" : SRMAPI
 }
 
 

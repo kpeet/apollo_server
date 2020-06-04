@@ -3,19 +3,31 @@ const typeDefs = require('./src/typeDefs/schema');
 const resolvers = require('./src/resolvers/resolvers');
 const jwt = require('jsonwebtoken');
 
-const conectarDB = require('./config/db');
-//Carga de controladores
 const controller = require('./src/controllers/controller');
 
-
-//Conectar a la base de datos
-conectarDB();
-
-
+console.log("controller")
+console.log(JSON.stringify(controller))
+console.log(controller)
 //servidor
 const server = new ApolloServer({
     typeDefs:[controller.typeDefs],
     resolvers : [controller.resolvers],
+    dataSources: () =>{
+
+        try{
+            return {
+                SRMAPI: new controller.dataSources(),
+            };
+
+        }catch(error){
+            console.log("ERROR");
+            console.log(error);
+            return {
+                SRMAPI: new controller.dataSources(),
+            };
+        }
+
+    },
     context: ({req}) => {
         console.log("Por Aqui");
         const token = req.headers['autorization'] || '';

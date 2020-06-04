@@ -18,65 +18,35 @@ const crearToken = (usuario, secreta, expiresIn) => {
 const resolvers = {
     Query: {
         obtenerUsuario: async(_, {token}) =>{
-            const usuarioId = await jwt.verify(token,process.env.SECRETA )
+            const usuarioId =  jwt.verify(token,process.env.SECRETA )
 
             return usuarioId
         }
     },
     Mutation: {
-        nuevoUsuario: async (_, {input}) => {
+        nuevoUsuario: async (_source, { input }, { dataSources }) => {
 
-            const { email, password} = input;
-
-            //Revisa si el usuario está registrado
-
-            const existeUsuario = await Usuario.findOne({email});
-            if (existeUsuario){
-                throw new Error('El usuario ya está registrado')
-            }
-
-            //Hashear su password
-            const salt = await bcryptjs.genSalt(10);
-            input.password = await bcryptjs.hash(password, salt);
-
+            const  { nombre, apellido, email, password} = input;
 
             try{
-                //Guardarlo en la base de datos
-
-                const usuario = new Usuario(input);
-                usuario.save();//guardarlo
-                return usuario;
+                const result = await dataSources.SRMAPI.userRegister(nombre, apellido, email, password);
+                return result;
 
             }catch(error){
                 console.log(error);
-                console.log("FLAG 5");
+                throw error;
 
             }
-             return "Creando ....";
         },
 
-        autenticarUsuario: async (_ , {input})=>{
-
+        autenticarUsuario: async (_source, { input }, { dataSources }) => {
             const {email, password} = input;
 
-            //Si existe usuario
-            const existeUsario = await Usuario.findOne({email});
-            if(!existeUsario){
-                throw new Error('el usuario no existe')
-            }
+            const result = await dataSources.SRMAPI.login(email, password);
 
-            //Revisar si el password es correcto
-            const passwordCorrecto = await bcryptjs.compare(password, existeUsario.password);
-            if(!passwordCorrecto){
-                throw new Error('el password es incorrecto')
-            }
+            return result;
+        },
 
-            //crear el token
-
-            return {
-                token: crearToken(existeUsario, process.env.SECRETA, '24h')
-            }
-        }
     }
 
 }

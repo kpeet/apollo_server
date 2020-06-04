@@ -11,7 +11,7 @@ const conectarDB = async ()=> {
             useCreateIndex: true
 
         });
-        console.log("DB conectada")
+
 
     }catch (error){
         console.log("Error en connexion de DB")
