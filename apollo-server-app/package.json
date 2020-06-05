@@ -1,11 +1,15 @@
 {
-  "name": "ApolloSrm",
+  "name": "apollo-srm-api-getway",
   "version": "1.0.0",
-  "description": "Apollo Srm Cumplo",
+  "description": "Apollo Srm Api Getway",
+  "repository": {
+    "type": "bitbucket",
+    "url": "https://bitbucket.org/cumplo/srm-apollo-server/src/master/"
+  },
   "main": "index.js",
   "scripts": {
-    "start": "node .",
-    "dev": "nodemon ."
+    "start": "nodemon --exec babel-node index.js",
+    "production": "babel-node index.js"
   },
   "author": "Equipo Desarrollo Cumplo Junio 2020, Yaeko, Troc, Jauregui, Chuck(Jordan), Peet",
   "license": "ISC",
@@ -13,9 +17,29 @@
     "apollo-datasource-rest": "^0.9.2",
     "apollo-server": "^2.13.1",
     "dotenv": "^8.2.0",
-    "jsonwebtoken": "^8.5.1"
+    "jsonwebtoken": "^8.5.1",
+    "graphql": "^14.1.0"
   },
   "devDependencies": {
-    "nodemon": "^2.0.4"
+    "nodemon": "^2.0.4",
+    "@babel/core": "^7.0.0-rc.1",
+    "@babel/node": "^7.0.0-rc.1",
+    "@babel/plugin-proposal-object-rest-spread": "^7.0.0-rc.1",
+    "@babel/preset-env": "^7.0.0-rc.1"
+  },
+  "babel": {
+    "presets": [
+      [
+        "@babel/preset-env",
+        {
+          "targets": {
+            "node": "current"
+          }
+        }
+      ]
+    ],
+    "plugins": [
+      "@babel/plugin-proposal-object-rest-spread"
+    ]
   }
 }

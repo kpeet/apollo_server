@@ -1,49 +1,27 @@
-const {ApolloServer} = require('apollo-server');
-const jwt = require('jsonwebtoken');
-const controller = require('./src/controllers/LoginController');
-require('dotenv').config({path: 'variables.env'});
+import { ApolloServer } from "apollo-server";
+import dotenv from 'dotenv';
+dotenv.config(); /* Get env vars from .env file */
 
-
-//servidor
+/* Here get yours class and functions from controllers */
+import  {
+  SrmAPI,
+  AuthResolver,
+  AuthSchema,
+} from './src/controllers/AuthController';
+/* Instance Apollo Server */
 const server = new ApolloServer({
-    typeDefs:[controller.typeDefs],
-    resolvers : [controller.resolvers],
-    dataSources: () =>{
-
-        try{
-            return {
-                SRMAPI: new controller.dataSources(),
-            };
-
-        }catch(error){
-            console.log("dataSources ERROR");
-            console.log(error);
-            throw error
-        }
-
-    },
-    context: ({req}) => {
-        const token = req.headers['autorization'] || '';
-        //TODO: Modificar implementacion de headers=> refresc, access token
-        if(token){
-            try{
-                const usuario = jwt.verify(token.replace('Bearer ',''), process.env.SECRETA)
-                console.log(usuario);
-                return {
-                    usuario
-                }
-
-            }catch(error){
-                console.log('Error en validacion de token');
-                console.log(error)
-            }
-        }
-
-    }
+  typeDefs: [  /* Here subscribe yours schemas */
+    AuthSchema,
+  ],
+  resolvers: [ /* Here subscribe yours resolvers mehtods */
+    AuthResolver,
+  ],
+  dataSources: () => ({ /* Here subscribe yours dataSources */
+   SrmAPI: new SrmAPI(),
+  }),
 });
 
-//arrancar el servidor
+//Run Apollo Server
 server.listen({port: process.env.PORT || 4000}).then(({url}) => {
-    console.log(`Servidor listo en la url ${url}`)
-
-})
+    console.log(`🚀  Server ready at ${url}`);
+});

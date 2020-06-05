@@ -16,18 +16,17 @@ const cursos = [
         tecnologia: 'React'
     }
 ];
+
 //Resolvers
 const resolvers = {
-    Query: {
-        obtenerCursos: (_, {input}, ctx, info) => {
-            console.log(input);
-            const resultado = cursos.filter(curso => curso.tecnologia == input.tecnologia)
-
-            return resultado
-
+  Query: {
+    obtenerCursos: (_, {input}, ctx, info) => {
+      console.log(input);
+      const resultado = cursos.filter(curso => curso.tecnologia == input.tecnologia)
+      return resultado
     },
-        obtenerTecnologia: () => cursos
-}
-}
+    obtenerTecnologia: () => cursos
+  }
+};
 
-module.exports = resolvers;
+export default resolvers;
