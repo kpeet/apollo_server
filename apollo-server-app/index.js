@@ -1,6 +1,7 @@
 const {ApolloServer} = require('apollo-server');
 const jwt = require('jsonwebtoken');
 const controller = require('./src/controllers/LoginController');
+require('dotenv').config({path: 'variables.env'});
 
 
 //servidor

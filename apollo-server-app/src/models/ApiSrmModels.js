@@ -3,8 +3,10 @@ const {RESTDataSource} = require('apollo-datasource-rest');
 
 class SRMAPI extends RESTDataSource {
     constructor() {
+        console.log("process.env.API_SRM");
+        console.log(process.env.API_SRM);
         super();
-        this.baseURL = 'http://172.28.0.6:8000/'
+        this.baseURL = process.env.API_SRM
     }
 
     //LOGIN
@@ -37,6 +39,26 @@ class SRMAPI extends RESTDataSource {
         };
 
          const user_login =await this.post(
+            `register/`, // path
+            payload, // request body
+        );
+        console.log("user_login");
+        console.log(user_login);
+
+        return user_login
+    }
+    //Cambio de contraseña
+    async userRegister(nombre, apellido, email, password) {
+        console.log("INICIANDO userRegister");
+        const payload = {
+            "username": email,
+            "password": password,
+            "email": email,
+            "first_name": nombre,
+            "last_name": apellido
+        };
+
+        const user_login =await this.post(
             `register/`, // path
             payload, // request body
         );
