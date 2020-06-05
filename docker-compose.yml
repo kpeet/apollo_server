@@ -7,6 +7,9 @@ services:
     volumes:
     - ./apollo-server-app:/source
     - /source/node_modules
+    environment:
+      - API_SRM=http://api-srm-cumplo:8000/
+      - SECRETA=palabrasecreta
   redis:
     image: bitnami/redis:latest
     environment:
