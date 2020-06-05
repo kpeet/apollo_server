@@ -15,16 +15,15 @@ const server = new ApolloServer({
             };
 
         }catch(error){
-            console.log("ERROR");
+            console.log("dataSources ERROR");
             console.log(error);
-            return {
-                SRMAPI: new controller.dataSources(),
-            };
+            throw error
         }
 
     },
     context: ({req}) => {
         const token = req.headers['autorization'] || '';
+        //TODO: Modificar implementacion de headers=> refresc, access token
         if(token){
             try{
                 const usuario = jwt.verify(token.replace('Bearer ',''), process.env.SECRETA)
@@ -34,14 +33,13 @@ const server = new ApolloServer({
                 }
 
             }catch(error){
-                console.log('Hubo un error');
+                console.log('Error en validacion de token');
                 console.log(error)
             }
         }
 
     }
 });
-
 
 //arrancar el servidor
 server.listen({port: process.env.PORT || 4000}).then(({url}) => {
