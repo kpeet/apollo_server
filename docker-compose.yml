@@ -6,6 +6,7 @@ services:
       - "4001:4000"
     volumes:
     - ./apollo-server-app:/source
+    - /source/node_modules
   redis:
     image: bitnami/redis:latest
     environment:
