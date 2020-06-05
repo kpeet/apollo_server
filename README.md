@@ -1,42 +1,25 @@
-# apollo_server
-projecto de implementación de apollo server para graphql
-
-Drive con notas: 
-
-https://docs.google.com/document/d/1CKY-8mB04oXUTVAQJ5cYIuCC-9pB93AI0m9QsA6CwsA/edit
+# APOLLO SRM Cumplo 
 
 
 ###Inicio de proyecto
-npm init
-npm i apollo-server
-npm i -D nodemon
+- docker-compose build
+- docker network create apollonet (necesario para comunicar entre dockers, api_srm)
+- docker-compose up
 
 
-###Para Integración con MongoDB
-
-
-dotend: variables de entorno  
-
-mongoose: ORM para node
-
-npm i mongoose dotenv
-
-##JSON WEB TOKEN
-
-npm i jsonwebtoken
-
-
+##resumen apollo-server
 apollo-server: servidor para Graphql
-nodemon: .va a ir reiniciando el servidor a medida que cambian los archivos en desarrollo (-D)
 
-
-Scheme
-describe tur tipo de objetos, query y dato de tu aplicacion, query es lo unico obligatorio en tu schema
-
+Scheme(TypeDefs)
+describe tus tipos de objetos, query y dato de tu aplicacion
 
 Resolvers
-Funciones responzables de retornar los valores que existen en tu schema
+Funciones responsables de retornar los valores que existen en tu schema(TypeDefs)
 
+# dependencias
+dotend: variables de entorno  
+nodemon: reinicia el servidor a medida que cambian los archivos en desarrollo (-D)
+apollo-datasource-rest: Comunicación REST para apollo
 
 
 

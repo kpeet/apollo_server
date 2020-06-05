@@ -13,9 +13,9 @@ const typeDefs = gql`
         }
         
         type Token{
-            token: String
+            refresh: String
+            access: String
         }
-        
         
         input UsuarioInput {
             nombre: String!

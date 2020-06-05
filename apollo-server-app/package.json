@@ -1,20 +1,19 @@
 {
-  "name": "crmgraphqlcurso",
+  "name": "ApolloSrm",
   "version": "1.0.0",
-  "description": "curso de graphql",
+  "description": "Apollo Srm Cumplo",
   "main": "index.js",
   "scripts": {
     "start": "node .",
     "dev": "nodemon ."
   },
-  "author": "Kenneth Peet D.",
+  "author": "Equipo Desarrollo Cumplo Junio 2020, Yaeko, Troc, Jauregui, Chuck(Jordan), Peet",
   "license": "ISC",
   "dependencies": {
+    "apollo-datasource-rest": "^0.9.2",
     "apollo-server": "^2.13.1",
-    "bcryptjs": "^2.4.3",
     "dotenv": "^8.2.0",
-    "jsonwebtoken": "^8.5.1",
-    "mongoose": "^5.9.15"
+    "jsonwebtoken": "^8.5.1"
   },
   "devDependencies": {
     "nodemon": "^2.0.4"

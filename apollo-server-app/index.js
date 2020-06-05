@@ -1,21 +1,30 @@
 const {ApolloServer} = require('apollo-server');
-const typeDefs = require('./db/schema');
-const resolvers = require('./db/resolvers');
 const jwt = require('jsonwebtoken');
+const controller = require('./src/controllers/LoginController');
+require('dotenv').config({path: 'variables.env'});
 
-const conectarDB = require('./config/db');
-
-
-//Conectar a la base de datos
-conectarDB();
 
 //servidor
 const server = new ApolloServer({
-    typeDefs,
-    resolvers,
+    typeDefs:[controller.typeDefs],
+    resolvers : [controller.resolvers],
+    dataSources: () =>{
+
+        try{
+            return {
+                SRMAPI: new controller.dataSources(),
+            };
+
+        }catch(error){
+            console.log("dataSources ERROR");
+            console.log(error);
+            throw error
+        }
+
+    },
     context: ({req}) => {
-        console.log("Por Aqui");
         const token = req.headers['autorization'] || '';
+        //TODO: Modificar implementacion de headers=> refresc, access token
         if(token){
             try{
                 const usuario = jwt.verify(token.replace('Bearer ',''), process.env.SECRETA)
@@ -25,15 +34,13 @@ const server = new ApolloServer({
                 }
 
             }catch(error){
-                console.log('Hubo un error');
+                console.log('Error en validacion de token');
                 console.log(error)
             }
         }
-        console.log(token);
 
     }
 });
-
 
 //arrancar el servidor
 server.listen({port: process.env.PORT || 4000}).then(({url}) => {

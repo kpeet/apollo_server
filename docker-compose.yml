@@ -4,6 +4,9 @@ services:
     build: .
     ports:
       - "4001:4000"
+    volumes:
+    - ./apollo-server-app:/source
+    - /source/node_modules
   redis:
     image: bitnami/redis:latest
     environment:
@@ -12,3 +15,7 @@ services:
       - 6379
     ports:
       - "6379:6379"
+networks:
+  default:
+    external:
+      name: apollonet
