@@ -6,8 +6,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 ##Added
-- Add Srm login with access and refresh token (mutation autenticarUsuario)[()]
-- Add Srm user register (mutation nuevoUsuario) [()]
+- Add Srm login with access and refresh token (mutation autenticarUsuario)[(3)]
+- Add Srm user register (mutation nuevoUsuario) [(3)]
 - Add base project[()]
     
 ### DevOps
@@ -19,4 +19,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [Unreleased]: https://bitbucket.org/cumplo/srm-apollo-server/branches/compare/devel..#diff
 
 [(1)]: https://bitbucket.org/cumplo/srm-apollo-server/pull-requests/1/
-[()]: https://bitbucket.org/cumplo/srm-apollo-server/pull-requests/
+[(3)]: https://bitbucket.org/cumplo/srm-apollo-server/pull-requests/3/
