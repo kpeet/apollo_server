@@ -5,7 +5,7 @@ const  SRMAPI = require('../models/ApiSrmModels');
 //Controller
 
 const controller = {
-    resolvers,
+    "resolvers":resolvers,
     "typeDefs": typeDefs,
     "dataSources" : SRMAPI
 }
