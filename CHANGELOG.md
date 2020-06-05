@@ -9,7 +9,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Add Srm login with access and refresh token (mutation autenticarUsuario)[(3)]
 - Add Srm user register (mutation nuevoUsuario) [(3)]
 - Add base project[(3)]
-    
+- Refactor code, es6 standar, babel configuration [(4)]
+
 ### DevOps
 - Add node_modules to volumen [()]
 - Add docker support [(1)]
@@ -20,3 +21,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 [(1)]: https://bitbucket.org/cumplo/srm-apollo-server/pull-requests/1/
 [(3)]: https://bitbucket.org/cumplo/srm-apollo-server/pull-requests/3/
+[(4)]: https://bitbucket.org/cumplo/srm-apollo-server/pull-requests/4/
