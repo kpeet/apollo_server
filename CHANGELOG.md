@@ -8,7 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ##Added
 - Add Srm login with access and refresh token (mutation autenticarUsuario)[(3)]
 - Add Srm user register (mutation nuevoUsuario) [(3)]
-- Add base project[()]
+- Add base project[(3)]
     
 ### DevOps
 - Add node_modules to volumen [()]
