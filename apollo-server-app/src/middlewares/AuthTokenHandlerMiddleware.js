@@ -22,7 +22,7 @@ export const setHeadersResponseMiddleware = (argument) => {
   const { refresh } = context;
   if(context.exp_status){
     argument.response.http.headers.set('x-token', refresh.access);
-    argument.response.http.headers.set('x-refres-token', refresh.refresh);
+    argument.response.http.headers.set('x-refresh-token', refresh.refresh);
   }
   return true;
 };
@@ -42,12 +42,17 @@ export const RefreshTokenMiddleware = async (request) => {
       console.log("Token expired");
       /* refresh */
       const refresh = await requestRefreshToken(refreshToken);
+      //Update request headers
+      request.headers['x-token'] = refresh.access;
+      request.headers['x-refresh-token'] = refresh.refresh;
+      // Return refresh, then add to contex
       return { exp_status: true, refresh  };
     } else {
       console.log("Not expired ->  now: "+currentTime+" exp: "+tokenDecode.exp);
       return { exp_status: false };
     }
   } catch (e) {  /* if request doesn't have token headers */
+    console.log(e);
     return { exp_status: false };
   }
 };
