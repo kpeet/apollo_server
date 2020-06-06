@@ -52,7 +52,6 @@ export const RefreshTokenMiddleware = async (request) => {
       return { exp_status: false };
     }
   } catch (e) {  /* if request doesn't have token headers */
-    console.log(e);
     return { exp_status: false };
   }
 };
