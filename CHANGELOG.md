@@ -15,6 +15,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Add Srm user register (mutation nuevoUsuario) [(3)]
 - Add base project[(3)]
 - Add babel, babel configuration [(4)]
+- Add Auht handler token middlewares [(7)]
 
 ### Fixed
 - Add environment var to docker-compose [(6)]
@@ -32,3 +33,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [(4)]: https://bitbucket.org/cumplo/srm-apollo-server/pull-requests/4/
 [(5)]: https://bitbucket.org/cumplo/srm-apollo-server/pull-requests/5/
 [(6)]: https://bitbucket.org/cumplo/srm-apollo-server/pull-requests/6/
+[(7)]: https://bitbucket.org/cumplo/srm-apollo-server/pull-requests/7/
