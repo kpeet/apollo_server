@@ -17,8 +17,10 @@
     "apollo-datasource-rest": "^0.9.2",
     "apollo-server": "^2.13.1",
     "dotenv": "^8.2.0",
+    "graphql": "^14.1.0",
     "jsonwebtoken": "^8.5.1",
-    "graphql": "^14.1.0"
+    "node-fetch": "^2.6.0",
+    "regenerator-runtime": "^0.13.5"
   },
   "devDependencies": {
     "nodemon": "^2.0.4",
