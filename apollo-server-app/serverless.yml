@@ -31,7 +31,7 @@ custom:
     webpackConfig: 'webpack.config.js'   # Name of webpack configuration file
   customDomain:
     basePath: ""
-    domainName: srm-apollo-server.${self:provider.stage}.cumplo.cl
+    domainName: srm-apollo-server.${self:provider.stage}.cumplo.com
     stage: ${self:provider.stage}
     createRoute53Record: true
     endpointType: 'regional'
