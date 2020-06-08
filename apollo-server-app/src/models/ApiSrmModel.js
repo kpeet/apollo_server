@@ -2,40 +2,25 @@ import  { RESTDataSource } from 'apollo-datasource-rest';
 import dotenv from 'dotenv';
 dotenv.config();
 
+/* Official Api Methods */
 class SrmAPI extends RESTDataSource {
   constructor() {
     super();
-    this.baseURL = process.env.API_SRM
-  };
-  //Login
-  async login(input){
-      const payload = {
-        "username": input.email,
-        "password": input.password
-      };
-      const user_login = await this.post(
-        `login/`, // path
-        payload, // request body
-      );
-      return user_login;
+    this.baseURL = process.env.API_SRM;
   };
 
-  //Register
-  async userRegister (input){
-    const payload = {
-      "username": input.email,
-      "password": input.password,
-      "email": input.email,
-      "first_name": input.name,
-      "last_name": input.last_name
-    };
-    const user_login = await this.post(
-      `register/`, // api django path
-       payload, // request body
-    );
-    return user_login
-  };
+  //Set headers (Authorization Bearer)
+  willSendRequest(request) {
+    try {
+      request.headers.set('Authorization',`Bearer ${this.context.refresh.access}`);
+    } catch (e) { /* do nothing */ }
+  }
 
+  //Get Available Services Api
+  async getAvailableServices (input){
+    const services = await this.get(``);
+    return services;
+  };
 }
 
 export default SrmAPI;

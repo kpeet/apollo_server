@@ -1,9 +1,9 @@
 import resolvers from './../resolvers/AuthResolver';
 import  typeDefs from '../typeDefs/AuthSchema';
-import SrmAPI from '../models/ApiSrmModel';
+import SrmAUTH from '../models/AuthSrmModel';
 
 export {
-  SrmAPI,
+  SrmAUTH,
   resolvers as AuthResolver,
   typeDefs as AuthSchema
 };

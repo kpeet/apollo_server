@@ -5,7 +5,7 @@ const resolvers = {
   Mutation: {
     registerUser: async (_source, { input }, { dataSources }) => {
       try{
-        const result = await dataSources.SrmAPI.userRegister(input);
+        const result = await dataSources.SrmAUTH.userRegister(input);
         return result;
       }catch(error){
         console.log(error);
@@ -13,7 +13,7 @@ const resolvers = {
       }
     },
     loginUser: async (_source, { input }, { dataSources }) => {
-      const result = await dataSources.SrmAPI.login(input);
+      const result = await dataSources.SrmAUTH.login(input);
       return result;
     },
   }
