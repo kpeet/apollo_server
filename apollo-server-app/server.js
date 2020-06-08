@@ -1,22 +1,24 @@
 // server.js
 
-const { ApolloServer, gql } = require('srm-apollo');
+const { ApolloServer } = require('apollo-server-lambda');
 
-// Construct a schema, using GraphQL schema language
-const typeDefs = gql`
-  type Query {
-    hello: String
-  }
-`;
-
-// Provide resolver functions for your schema fields
-const resolvers = {
-  Query: {
-    hello: () => 'Hello world!',
-  },
-};
-
-const server = new ApolloServer({ typeDefs, resolvers });
+import  {
+  SrmAPI,
+  AuthResolver,
+  AuthSchema,
+} from './src/controllers/AuthController';
+/* Instance Apollo Server */
+const server = new ApolloServer({
+  typeDefs: [  /* Here subscribe yours schemas */
+    AuthSchema,
+  ],
+  resolvers: [ /* Here subscribe yours resolvers mehtods */
+    AuthResolver,
+  ],
+  dataSources: () => ({ /* Here subscribe yours dataSources */
+   SrmAPI: new SrmAPI(),
+  }),
+});
 
 exports.graphqlHandler = server.createHandler({
   cors: {

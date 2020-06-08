@@ -1,5 +1,5 @@
 awsdeployment:
-  image: jupitercl/sls-apollo-server-aws-lambda
+  build:
+    image: cumplo/api-apollo-server
+    dockerfile: Dockerfile
   encrypted_env_file: .env.encrypted
-  volumes:
-    - ./apollo-server-app:/apollo
