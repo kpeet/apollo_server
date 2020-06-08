@@ -5,8 +5,9 @@ dotenv.config();
 class SrmAPI extends RESTDataSource {
   constructor() {
     super();
-    this.baseURL = process.env.API_SRM
+    this.baseURL = process.env.API_SRM;
   };
+
   //Login
   async login(input){
       const payload = {
