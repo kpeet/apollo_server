@@ -11,35 +11,36 @@
     "start": "nodemon --exec babel-node index.js",
     "production": "babel-node index.js"
   },
-  "author": "Equipo Desarrollo Cumplo Junio 2020, Yaeko, Troc, Jauregui, Chuck(Jordan), Peet",
-  "license": "ISC",
   "dependencies": {
     "apollo-datasource-rest": "^0.9.2",
-    "apollo-server": "^2.13.1",
-    "dotenv": "^8.2.0",
     "jsonwebtoken": "^8.5.1",
-    "graphql": "^14.1.0"
+    "apollo-server": "^2.13.1",
+    "apollo-server-cache-redis": "^1.1.5",
+    "apollo-server-lambda": "^2.13.1",
+    "dotenv": "^8.2.0",
+    "graphql": "^15.0.0",
+    "nodemon-webpack-plugin": "^4.3.1",
+    "source-map-support": "^0.5.10",
+    "webpack": "^4.42.0",
+    "webpack-cli": "^3.3.11",
+    "webpack-merge": "^4.2.2",
+    "webpack-node-externals": "^1.7.2"
   },
   "devDependencies": {
-    "nodemon": "^2.0.4",
-    "@babel/core": "^7.0.0-rc.1",
-    "@babel/node": "^7.0.0-rc.1",
-    "@babel/plugin-proposal-object-rest-spread": "^7.0.0-rc.1",
-    "@babel/preset-env": "^7.0.0-rc.1"
+    "@types/aws-lambda": "^8.10.17",
+    "@types/dotenv": "^8.2.0",
+    "@types/graphql": "^14.5.0",
+    "@types/node": "^10.17.21",
+    "fork-ts-checker-webpack-plugin": "^3.0.1",
+    "serverless": "^1.70.1",
+    "serverless-domain-manager": "^4.1.1",
+    "serverless-offline": "^6.1.5",
+    "serverless-webpack": "^5.2.0",
+    "ts-loader": "^5.3.3",
+    "typescript": "^3.2.4",
+    "webpack": "^4.29.0",
+    "webpack-node-externals": "^1.7.2"
   },
-  "babel": {
-    "presets": [
-      [
-        "@babel/preset-env",
-        {
-          "targets": {
-            "node": "current"
-          }
-        }
-      ]
-    ],
-    "plugins": [
-      "@babel/plugin-proposal-object-rest-spread"
-    ]
-  }
+  "author": "Equipo Desarrollo Cumplo Junio 2020, Yaeko, Troc, Jauregui, Chuck(Jordan), Peet",
+  "license": "ISC"
 }
