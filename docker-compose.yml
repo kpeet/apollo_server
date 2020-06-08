@@ -1,12 +1,17 @@
 version: '3'
 services:
   apollo:
-    build: .
+    image: cumplo/srm-apollo-server
+    build:
+      context: .
+      dockerfile: Dockerfile
     ports:
       - "4001:4000"
     volumes:
-    - ./apollo-server-app:/source
-    - /source/node_modules
+      - ./apollo-server-app:/apollo
+      - /apollo/node_modules/
+    command: >
+      sh -c "serverless --host 0.0.0.0 --httpPort 4000 offline start --stage development"
     environment:
       - API_SRM=http://api-srm-cumplo:8000/
       - SECRETA=palabrasecreta
