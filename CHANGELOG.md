@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 - variables.env [(5)]
 - Refactor code, es6 standar [(4)]
+- Refactor code move auth model [(8)]
 
 ## Added
 - Add Srm login with access and refresh token (mutation autenticarUsuario)[(3)]
@@ -16,9 +17,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Add base project[(3)]
 - Add babel, babel configuration [(4)]
 - Add Auht handler token middlewares [(7)]
+- Add create official class api with bearer headers middleware [(8)]
 
 ### Fixed
 - Add environment var to docker-compose [(6)]
+- improove refresh and auth process [(8)]
 
 ### DevOps
 - Add node_modules to volumen [()]
@@ -34,3 +37,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [(5)]: https://bitbucket.org/cumplo/srm-apollo-server/pull-requests/5/
 [(6)]: https://bitbucket.org/cumplo/srm-apollo-server/pull-requests/6/
 [(7)]: https://bitbucket.org/cumplo/srm-apollo-server/pull-requests/7/
+[(8)]: https://bitbucket.org/cumplo/srm-apollo-server/pull-requests/8/
