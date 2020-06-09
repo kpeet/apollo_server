@@ -23,6 +23,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Add environment var to docker-compose [(6)]
 - improove refresh and auth process [(8)]
 - refactor context instance for aws lambda support [(9)]
+- Allow special headers field in cors preflight response [(11)]
 
 ### DevOps
 - Add node_modules to volumen [()]
@@ -48,3 +49,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [(8)]: https://bitbucket.org/cumplo/srm-apollo-server/pull-requests/8/
 [(9)]: https://bitbucket.org/cumplo/srm-apollo-server/pull-requests/9/
 [(10)]: https://bitbucket.org/cumplo/srm-apollo-server/pull-requests/10/
+[(10)]: https://bitbucket.org/cumplo/srm-apollo-server/pull-requests/11/
