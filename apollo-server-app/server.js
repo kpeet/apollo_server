@@ -20,6 +20,8 @@ import  {
 
 /* Instance Apollo Server */
 const server = new ApolloServer({
+  playground: true,
+  introspection: true,
   typeDefs: [  /* Here subscribe yours schemas */
     AuthSchema,
     TestSchema,
