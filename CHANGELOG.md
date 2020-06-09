@@ -22,6 +22,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 - Add environment var to docker-compose [(6)]
 - improove refresh and auth process [(8)]
+- refactor context instance for aws lambda support [(8)]
 
 ### DevOps
 - Add node_modules to volumen [()]
