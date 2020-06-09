@@ -33,6 +33,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Refactor packages [(9)]
 - Create server.js main [(9)]
 - Update import gql from apollo-server-lambda in schema files [(9)]
+- Enabled playground [(10)]
+- Add environment api_srm endpoint [(10)]
+- Delete environment SECRETA [(10)]
 
 [Unreleased]: https://bitbucket.org/cumplo/srm-apollo-server/branches/compare/devel..#diff
 
@@ -44,3 +47,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [(7)]: https://bitbucket.org/cumplo/srm-apollo-server/pull-requests/7/
 [(8)]: https://bitbucket.org/cumplo/srm-apollo-server/pull-requests/8/
 [(9)]: https://bitbucket.org/cumplo/srm-apollo-server/pull-requests/9/
+[(10)]: https://bitbucket.org/cumplo/srm-apollo-server/pull-requests/10/
