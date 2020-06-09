@@ -16,6 +16,8 @@ const requestRefreshToken =  async (token) => {
 
 //Set Header response helper
 export const setHeadersResponseMiddleware = (argument, response) => {
+  // Set preflight cors allow special fields in headers
+  argument.response.http.headers.set('Access-Control-Allow-Headers', 'x-token, x-refresh-token');
   const { context } = argument;
   const { refresh, exp_status } = context.extra;
   if(exp_status){
