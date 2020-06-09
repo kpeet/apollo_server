@@ -11,8 +11,9 @@ class SrmAPI extends RESTDataSource {
 
   //Set headers (Authorization Bearer)
   willSendRequest(request) {
+    //console.log(this.context);
     try {
-      request.headers.set('Authorization',`Bearer ${this.context.refresh.access}`);
+      request.headers.set('Authorization',`Bearer ${this.context.extra.refresh.access}`);
     } catch (e) { /* do nothing */ }
   }
 

@@ -19,8 +19,9 @@ const requestRefreshToken =  async (token) => {
 //Set Header response helper
 export const setHeadersResponseMiddleware = (argument, response) => {
   const { context } = argument;
-  const { refresh } = context;
-  if(context.exp_status){
+  const { refresh, exp_status } = context.extra;
+  if(exp_status){
+    argument.response.http.headers.set('Access-Control-Expose-Headers', 'x-token, x-refresh-token');
     argument.response.http.headers.set('x-token', refresh.access);
     argument.response.http.headers.set('x-refresh-token', refresh.refresh);
   }
@@ -29,12 +30,11 @@ export const setHeadersResponseMiddleware = (argument, response) => {
 
 //Refresh middleware
 export const RefreshTokenMiddleware = async (request) => {
-  // Get the user token from the headers.
-  const token = request.headers['x-token'] || '';
-  const refreshToken = request.headers['x-refresh-token'] || '';
-  const currentTime = new Date().getTime() / 1000;
-
   try {
+    // Get the user token from the headers.
+    const token = request.headers['x-token'] || '';
+    const refreshToken = request.headers['x-refresh-token'] || '';
+    const currentTime = new Date().getTime() / 1000;
     //Decode token
     const tokenDecode = jwt.decode(token);
     //Chek exp

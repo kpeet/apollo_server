@@ -34,8 +34,15 @@ const server = new ApolloServer({
    SrmAUTH: new SrmAUTH(),
    SrmAPI: new SrmAPI(),
   }),
-  context: ({ req , res }) => { /* middleware before request */
-    return RefreshTokenMiddleware(req);
+  context: async({ event, context }) => {
+    //Add middleware to context
+    const extra = await RefreshTokenMiddleware(event);
+    context = { ...context, extra };
+    return {
+      functionName: context.functionName,
+      context,
+      extra
+    };
   },
   formatResponse: (response, context) => { /* middleware after request */
     return setHeadersResponseMiddleware(context, response);
