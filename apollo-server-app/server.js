@@ -59,5 +59,6 @@ exports.graphqlHandler = server.createHandler({
       'x-token',
       'x-refresh-token'
     ],
+    'preflightContinue': false
   },
 });
