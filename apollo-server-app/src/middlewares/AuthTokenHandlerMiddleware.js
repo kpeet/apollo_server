@@ -1,8 +1,6 @@
 import jwt from 'jsonwebtoken';
 import "regenerator-runtime/runtime";
 import fetch from 'node-fetch';
-import dotenv from 'dotenv';
-dotenv.config();
 
 //Refresh Token, Post Request
 const requestRefreshToken =  async (token) => {

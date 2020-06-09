@@ -3,8 +3,6 @@ import  {
   RefreshTokenMiddleware,
   setHeadersResponseMiddleware
 } from './src/middlewares/AuthTokenHandlerMiddleware';
-import dotenv from 'dotenv';
-dotenv.config();
 
 /* Here get yours class and functions from controllers */
 import  {

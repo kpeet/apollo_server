@@ -1,6 +1,4 @@
 import  { RESTDataSource } from 'apollo-datasource-rest';
-import dotenv from 'dotenv';
-dotenv.config();
 
 /* Official Api Methods */
 class SrmAPI extends RESTDataSource {
