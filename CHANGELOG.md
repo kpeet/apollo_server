@@ -25,6 +25,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - refactor context instance for aws lambda support [(9)]
 - Allow special headers field in cors preflight response [(11)]
 - Allow special headers field in cors preflight response [(12)]
+- Allow special headers field in cors preflight response [(13)]
 
 ### DevOps
 - Add node_modules to volumen [()]
@@ -52,3 +53,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [(10)]: https://bitbucket.org/cumplo/srm-apollo-server/pull-requests/10/
 [(11)]: https://bitbucket.org/cumplo/srm-apollo-server/pull-requests/11/
 [(12)]: https://bitbucket.org/cumplo/srm-apollo-server/pull-requests/12/
+[(13)]: https://bitbucket.org/cumplo/srm-apollo-server/pull-requests/13/
