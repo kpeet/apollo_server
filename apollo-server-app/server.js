@@ -1,22 +1,51 @@
 // server.js
 
-const { ApolloServer, gql } = require('srm-apollo');
+import { ApolloServer } from 'apollo-server-lambda';
+import  {
+  RefreshTokenMiddleware,
+  setHeadersResponseMiddleware
+} from './src/middlewares/AuthTokenHandlerMiddleware';
 
-// Construct a schema, using GraphQL schema language
-const typeDefs = gql`
-  type Query {
-    hello: String
-  }
-`;
+/* Here get yours class and functions from controllers */
+import  {
+  SrmAUTH,
+  AuthResolver,
+  AuthSchema,
+} from './src/controllers/AuthController';
+import  {
+  SrmAPI,
+  TestResolver,
+  TestSchema,
+} from './src/controllers/TestController';
 
-// Provide resolver functions for your schema fields
-const resolvers = {
-  Query: {
-    hello: () => 'Hello world!',
+/* Instance Apollo Server */
+const server = new ApolloServer({
+  typeDefs: [  /* Here subscribe yours schemas */
+    AuthSchema,
+    TestSchema,
+  ],
+  resolvers: [ /* Here subscribe yours resolvers mehtods */
+    AuthResolver,
+    TestResolver,
+  ],
+  dataSources: () => ({ /* Here subscribe yours dataSources */
+   SrmAUTH: new SrmAUTH(),
+   SrmAPI: new SrmAPI(),
+  }),
+  context: async({ event, context }) => {
+    //Add middleware to context
+    const extra = await RefreshTokenMiddleware(event);
+    context = { ...context, extra };
+    return {
+      functionName: context.functionName,
+      context,
+      extra
+    };
   },
-};
-
-const server = new ApolloServer({ typeDefs, resolvers });
+  formatResponse: (response, context) => { /* middleware after request */
+    return setHeadersResponseMiddleware(context, response);
+  }
+});
 
 exports.graphqlHandler = server.createHandler({
   cors: {

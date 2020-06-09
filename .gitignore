@@ -114,3 +114,12 @@ package-lock.json
 
 # Serverless
 .serverless
+
+# dependencies
+/apollo-server-app/node_modules
+/.pnp
+.pnp.js
+
+# build artifacts
+dist/
+.webpack

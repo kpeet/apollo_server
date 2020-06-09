@@ -22,12 +22,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 - Add environment var to docker-compose [(6)]
 - improove refresh and auth process [(8)]
+- refactor context instance for aws lambda support [(9)]
 
 ### DevOps
 - Add node_modules to volumen [()]
 - Add docker support [(1)]
 - New folder structure [(1)]
 - Add CI/CD from codeship [(1)]
+- Install serverless offline [(9)]
+- Refactor packages [(9)]
+- Create server.js main [(9)]
+- Update import gql from apollo-server-lambda in schema files [(9)]
 
 [Unreleased]: https://bitbucket.org/cumplo/srm-apollo-server/branches/compare/devel..#diff
 
@@ -38,3 +43,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [(6)]: https://bitbucket.org/cumplo/srm-apollo-server/pull-requests/6/
 [(7)]: https://bitbucket.org/cumplo/srm-apollo-server/pull-requests/7/
 [(8)]: https://bitbucket.org/cumplo/srm-apollo-server/pull-requests/8/
+[(9)]: https://bitbucket.org/cumplo/srm-apollo-server/pull-requests/9/

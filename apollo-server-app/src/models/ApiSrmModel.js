@@ -1,6 +1,4 @@
 import  { RESTDataSource } from 'apollo-datasource-rest';
-import dotenv from 'dotenv';
-dotenv.config();
 
 /* Official Api Methods */
 class SrmAPI extends RESTDataSource {
@@ -12,7 +10,7 @@ class SrmAPI extends RESTDataSource {
   //Set headers (Authorization Bearer)
   willSendRequest(request) {
     try {
-      request.headers.set('Authorization',`Bearer ${this.context.refresh.access}`);
+      request.headers.set('Authorization',`Bearer ${this.context.extra.refresh.access}`);
     } catch (e) { /* do nothing */ }
   }
 

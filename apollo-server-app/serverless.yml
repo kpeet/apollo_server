@@ -1,6 +1,11 @@
 # serverless.yml
 
-service: srm-apollo
+service:
+  name: srm-apollo
+plugins:  
+  - serverless-domain-manager
+  - serverless-webpack
+  - serverless-offline
 provider:
   name: aws
   runtime: nodejs12.x
@@ -21,3 +26,12 @@ functions:
         path: graphql
         method: get
         cors: true
+custom:
+  webpack:
+    webpackConfig: 'webpack.config.js'   # Name of webpack configuration file
+  customDomain:
+    basePath: ""
+    domainName: srm-apollo-server.${self:provider.stage}.cumplo.com
+    stage: ${self:provider.stage}
+    createRoute53Record: true
+    endpointType: 'regional'

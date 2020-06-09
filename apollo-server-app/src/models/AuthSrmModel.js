@@ -1,6 +1,4 @@
 import  { RESTDataSource } from 'apollo-datasource-rest';
-import dotenv from 'dotenv';
-dotenv.config();
 
 class SrmAUTH extends RESTDataSource {
   constructor() {
