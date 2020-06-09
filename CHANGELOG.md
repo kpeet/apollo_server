@@ -49,4 +49,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [(8)]: https://bitbucket.org/cumplo/srm-apollo-server/pull-requests/8/
 [(9)]: https://bitbucket.org/cumplo/srm-apollo-server/pull-requests/9/
 [(10)]: https://bitbucket.org/cumplo/srm-apollo-server/pull-requests/10/
-[(10)]: https://bitbucket.org/cumplo/srm-apollo-server/pull-requests/11/
+[(11)]: https://bitbucket.org/cumplo/srm-apollo-server/pull-requests/11/
