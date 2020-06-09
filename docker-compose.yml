@@ -14,7 +14,6 @@ services:
       sh -c "serverless --host 0.0.0.0 --httpPort 4000 offline start --stage development"
     environment:
       - API_SRM=http://api-srm-cumplo:8000/
-      - SECRETA=palabrasecreta
   redis:
     image: bitnami/redis:latest
     environment:

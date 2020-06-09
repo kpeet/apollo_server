@@ -12,8 +12,7 @@ provider:
   region: us-west-2
   stage: ${opt:stage, 'development'}
   environment:
-    DB_MONGO: "mongodb+srv://kpeet:9oBRFpZC3DSF4c16@cluster0-ezcge.mongodb.net/CRMGraphql"
-    SECRETA: "palabrasecreta"
+    API_SRM: https://api-srm.${self:provider.stage}.cumplo.cl
 functions:
   graphql:
     handler: server.graphqlHandler
