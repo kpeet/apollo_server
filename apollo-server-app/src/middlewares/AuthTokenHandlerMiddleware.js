@@ -5,7 +5,6 @@ import fetch from 'node-fetch';
 //Refresh Token, Post Request
 const requestRefreshToken =  async (token) => {
   const baseURL = process.env.API_SRM;
-  console.log(baseURL);
   const payload = { "refresh": token };
   return fetch(`${baseURL}/refresh/`, {
         method: 'post',
@@ -30,11 +29,12 @@ export const setHeadersResponseMiddleware = (argument, response) => {
 //Refresh middleware
 export const RefreshTokenMiddleware = async (request) => {
   try {
-    // Get the user token from the headers.
-    const token = request.headers['x-token'] || '';
-    const refreshToken = request.headers['x-refresh-token'] || '';
+    // Destructuring
+    const authorization = request.headers['Authorization'];
+    const token = authorization.split(',')[0].substring(6);
+    const refreshToken = authorization.split(',')[1].substring(14);
     const currentTime = new Date().getTime() / 1000;
-    //Decode token
+    //Decode
     const tokenDecode = jwt.decode(token);
     //Chek exp
     if (currentTime > tokenDecode.exp) {
@@ -45,7 +45,7 @@ export const RefreshTokenMiddleware = async (request) => {
       return { exp_status: true, refresh  };
     } else {
       console.log("Not expired ->  now: "+currentTime+" exp: "+tokenDecode.exp);
-      return { exp_status: false, refresh: { access: token }};
+      return { exp_status: false, refresh: { access: token } };
     }
   } catch (e) {  /* if request doesn't have token headers */
     return { exp_status: false };
