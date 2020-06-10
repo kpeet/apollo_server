@@ -26,6 +26,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Allow special headers field in cors preflight response [(11)]
 - Allow special headers field in cors preflight response [(12)]
 - Allow special headers field in cors preflight response [(13)]
+- Finish solution cors preflight response [(14)]
 
 ### DevOps
 - Add node_modules to volumen [()]
@@ -54,3 +55,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [(11)]: https://bitbucket.org/cumplo/srm-apollo-server/pull-requests/11/
 [(12)]: https://bitbucket.org/cumplo/srm-apollo-server/pull-requests/12/
 [(13)]: https://bitbucket.org/cumplo/srm-apollo-server/pull-requests/13/
+[(14)]: https://bitbucket.org/cumplo/srm-apollo-server/pull-requests/14/
