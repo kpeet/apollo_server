@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - variables.env [(5)]
 - Refactor code, es6 standar [(4)]
 - Refactor code move auth model [(8)]
+- Update register method (schema and model) [(15)]
 
 ## Added
 - Add Srm login with access and refresh token (mutation autenticarUsuario)[(3)]
@@ -56,3 +57,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [(12)]: https://bitbucket.org/cumplo/srm-apollo-server/pull-requests/12/
 [(13)]: https://bitbucket.org/cumplo/srm-apollo-server/pull-requests/13/
 [(14)]: https://bitbucket.org/cumplo/srm-apollo-server/pull-requests/14/
+[(15)]: https://bitbucket.org/cumplo/srm-apollo-server/pull-requests/15/
