@@ -31,8 +31,8 @@ export const RefreshTokenMiddleware = async (request) => {
   try {
     // Destructuring
     const authorization = request.headers['Authorization'];
-    const token = authorization.split(',')[0].substring(6);
-    const refreshToken = authorization.split(',')[1].substring(14);
+    const token = authorization.split(',')[0].replace('token','').trim();
+    const refreshToken = authorization.split(',')[1].replace('refreshToken','').trim();
     const currentTime = new Date().getTime() / 1000;
     //Decode
     const tokenDecode = jwt.decode(token);
