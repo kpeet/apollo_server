@@ -28,9 +28,21 @@ const typeDefs = gql`
     email: String!
     password: String!
   }
+  type Confirmation{
+    status: String
+  }
+  input ForgotPasswordInput{
+    email: String!
+  }
+  input ConfirmForgotPasswordInput{
+    password: String!
+    token: String!
+  }
   type Mutation {
     registerUser(input: UserInput): UserResponse
     loginUser(input: AuthInput): Token
+    forgotPassword(input: ForgotPasswordInput): Confirmation
+    confirmForgotPassword(input: ConfirmForgotPasswordInput): Confirmation
   }
 `;
 

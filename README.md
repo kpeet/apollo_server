@@ -29,6 +29,8 @@ https://cumplo.atlassian.net/wiki/spaces/SRM/pages/1007288325/Servicios+registra
 
 Registro de usuario(Representante)
 Loguin de usuario(Representane)
+Cambio de contraseña(Representante) [mutation forgotPassword]
+confirmación de cambio de contraseña(Representante) [mutation confirmForgotPassword]
 
 creación de empresa(Empresa)[mutation enterprises]
 registrar una empresa como pagadora(Empresa-Pagadora)[mutation newEnterprisePayer]
