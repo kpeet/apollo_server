@@ -39,19 +39,19 @@ class SrmAUTH extends RESTDataSource {
 
     //Solicitud de cambio de contraseña
     async forgotPassword(input) {
-        const user_login = await this.post(
+        const forgot_password = await this.post(
             `forgot-password/`, // api django path
             input, // request body
         );
-        return user_login;
+        return forgot_password;
     };
     //Confirmación de cambio de contraseña
     async confirmChangePassword(input) {
-        const user_login = await this.post(
+        const forgot_password_confirm = await this.post(
             `forgot-password/confirm/`, // api django path
             input, // request body
         );
-        return user_login;
+        return forgot_password_confirm;
     };
 
 }
