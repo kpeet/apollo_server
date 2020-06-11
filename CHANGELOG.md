@@ -20,12 +20,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Add babel, babel configuration [(4)]
 - Add Auht handler token middlewares [(7)]
 - Add create official class api with bearer headers middleware [(8)]
-- Add Query representatives and payerCompanyForRepresentative[()]
-- Add Mutation asssignRepresentativeToPayerEnterprise[()]
-- Add Mutation newEnterprisePayer[()]
-- Add Mutation enterprises, Create Emterprise[()]
-- Add Mutation forgotPassword, it allow the change of the user password [(9)]
-- Add Mutation confirmForgotPassword, it change the user password[(9)]
+- Add Query representatives and payerCompanyForRepresentative[(16)]
+- Add Mutation asssignRepresentativeToPayerEnterprise[(16)]
+- Add Mutation newEnterprisePayer[(16)]
+- Add Mutation enterprises, Create Emterprise[(16)]
+- Add Mutation forgotPassword, it allow the change of the user password [(16)]
+- Add Mutation confirmForgotPassword, it change the user password[(16)]
 
 ### Fixed
 - Add environment var to docker-compose [(6)]
@@ -65,3 +65,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [(13)]: https://bitbucket.org/cumplo/srm-apollo-server/pull-requests/13/
 [(14)]: https://bitbucket.org/cumplo/srm-apollo-server/pull-requests/14/
 [(15)]: https://bitbucket.org/cumplo/srm-apollo-server/pull-requests/15/
+[(16)]: https://bitbucket.org/cumplo/srm-apollo-server/pull-requests/16/
