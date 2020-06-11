@@ -5,8 +5,6 @@ class SrmAPI extends RESTDataSource {
     constructor() {
         super();
         this.baseURL = process.env.API_SRM;
-        console.log("SrmAPI baseURL");
-        console.log(this.baseURL);
     };
 
     //Set headers (Authorization Bearer)
@@ -22,17 +20,17 @@ class SrmAPI extends RESTDataSource {
         const services = await this.get(``);
         return services;
     };
-
+    //Obtener lista de Representantes
     async getRepresentatives(input) {
         const services = await this.get(`representatives`);
         return services;
     };
-
+    //Obtener lista de empresas pagadoras en función al representante
     async getPayerCompanyForRepresentative(input) {
         const services = await this.get(`representatives/${input}/payers`);
         return services;
     };
-    //Register
+    //Crear Empresa
     async postEnterprises (input){
         const payload = input;
         const enterprise = await this.post(
@@ -41,6 +39,7 @@ class SrmAPI extends RESTDataSource {
         );
         return enterprise;
     };
+    //Crear Empresa pagadora en función a empresa creada
     async postPayers(input){
 
         const payload = { "enterprise":input};
@@ -50,6 +49,7 @@ class SrmAPI extends RESTDataSource {
         );
         return payer;
     };
+    //Asignar lista de representantes a empresas pagadoras
     async postAsssignRepresentativeToPayerEnterprise(payer_id, representantive_list){
 
         const payload = { "representatives":representantive_list};
