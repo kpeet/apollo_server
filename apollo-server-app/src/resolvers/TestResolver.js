@@ -34,6 +34,15 @@ const resolvers = {
                 throw error;
             }
         },
+        asssignRepresentativeToPayerEnterprise: async (_source, { input }, { dataSources }) => {
+            try{
+                const result = await dataSources.SrmAPI.postAsssignRepresentativeToPayerEnterprise(input.payer_id,input.representatives);
+                return result;
+            }catch(error){
+                console.log(error);
+                throw error;
+            }
+        },
 
     }
 

@@ -51,6 +51,18 @@ const testType = gql`
     postal_code: String!
     document_number:String!
   } 
+  input AssignPayerRepresentativeInput {
+    name: String!
+    payer_id: Int!
+    representatives: [Int]
+    business_name: String!
+    country: String!
+    city: String!
+    address: String!
+    postal_code: String!
+    document_number:String!
+    
+  } 
   
   type Query {
     Services : Available
@@ -60,6 +72,7 @@ const testType = gql`
   extend type Mutation {
     enterprises(input: EnterpriseInput): Enterprise
     newEnterprisePayer(enterprise_id: Int! ): enterprisePayerAssociation
+    asssignRepresentativeToPayerEnterprise(input: AssignPayerRepresentativeInput): [Representative]
     
   }
   `;
