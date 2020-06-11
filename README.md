@@ -22,6 +22,11 @@ nodemon: reinicia el servidor a medida que cambian los archivos en desarrollo (-
 apollo-datasource-rest: Comunicación REST para apollo
 
 ##Sprint 1 
+Descripción servicios Apollo en confluence:
+
+https://cumplo.atlassian.net/wiki/spaces/SRM/pages/1007288325/Servicios+registrados+en+Apollo+server+SRM+Sprint+1+Registrar+un+pago+confirmado
+
+
 Registro de usuario(Representante)
 Loguin de usuario(Representane)
 
@@ -29,7 +34,8 @@ creación de empresa(Empresa)[mutation enterprises]
 registrar una empresa como pagadora(Empresa-Pagadora)[mutation newEnterprisePayer]
 asociar empresa pagadora a representante(Empresa-Pagadora-Representante)[mutation asssignRepresentativeToPayerEnterprise]
 
-listar empresas pagadoras del representante(Empresa-Pagadora-Representante)
+listar empresas pagadoras del representante(Empresa-Pagadora-Representante)[Query payerCompanyForRepresentative]
+
 
 
 

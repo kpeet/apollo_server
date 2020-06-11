@@ -52,15 +52,8 @@ const testType = gql`
     document_number:String!
   } 
   input AssignPayerRepresentativeInput {
-    name: String!
     payer_id: Int!
     representatives: [Int]
-    business_name: String!
-    country: String!
-    city: String!
-    address: String!
-    postal_code: String!
-    document_number:String!
     
   } 
   
