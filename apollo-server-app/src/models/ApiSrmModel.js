@@ -32,6 +32,15 @@ class SrmAPI extends RESTDataSource {
         const services = await this.get(`representatives/${input}/payers`);
         return services;
     };
+    //Register
+    async postEnterprises (input){
+        const payload = input;
+        const enterprise = await this.post(
+            `enterprises/`, // api django path
+            payload, // request body
+        );
+        return enterprise;
+    };
 }
 
 export default SrmAPI;

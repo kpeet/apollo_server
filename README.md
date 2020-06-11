@@ -25,9 +25,9 @@ apollo-datasource-rest: Comunicación REST para apollo
 Registro de usuario(Representante)
 Loguin de usuario(Representane)
 
-creacion de empresa(Empresa)
+creación de empresa(Empresa)[mutation enterprises]
 registrar la empresa como pagadora(Empresa-Pagadora)
-registrar empresa pagadora a representante(Empresa-Pagadora-Representante)
+asociar empresa pagadora a representante(Empresa-Pagadora-Representante)
 
 listar empresas pagadoras del representante(Empresa-Pagadora-Representante)
 

@@ -20,7 +20,7 @@ const testType = gql`
     favorite_payer: String
     enterprises: String
   }
-  type payers {
+  type Enterprise {
     id: String,
     created: String
     updated: String
@@ -33,14 +33,27 @@ const testType = gql`
     postal_code: String
   }
   type payersRepresentantive {
-    favorite: payers
-    payers: [payers]
+    favorite: Enterprise
+    payers: [Enterprise]
   }
+  input EnterpriseInput {
+    name: String!
+    business_name: String!
+    country: String!
+    city: String!
+    address: String!
+    postal_code: String!
+    document_number:String!
+  } 
   
   type Query {
     Services : Available
     representatives: [Representative]
     payerCompanyForRepresentative(representantive_id: Int! ): payersRepresentantive
-  }`;
+  }
+  extend type Mutation {
+    enterprises(input: EnterpriseInput): Enterprise
+  }
+  `;
 
 export default testType;
