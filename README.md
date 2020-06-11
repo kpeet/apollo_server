@@ -26,7 +26,7 @@ Registro de usuario(Representante)
 Loguin de usuario(Representane)
 
 creación de empresa(Empresa)[mutation enterprises]
-registrar la empresa como pagadora(Empresa-Pagadora)
+registrar una empresa como pagadora(Empresa-Pagadora)[mutation newEnterprisePayer]
 asociar empresa pagadora a representante(Empresa-Pagadora-Representante)
 
 listar empresas pagadoras del representante(Empresa-Pagadora-Representante)

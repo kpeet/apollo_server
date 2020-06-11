@@ -24,7 +24,16 @@ const resolvers = {
                 throw error;
             }
         },
+        newEnterprisePayer: async (_source, { enterprise_id }, { dataSources }) => {
+            try{
 
+                const result = await dataSources.SrmAPI.postPayers(enterprise_id);
+                return result;
+            }catch(error){
+                console.log(error);
+                throw error;
+            }
+        },
 
     }
 
