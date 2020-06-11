@@ -20,6 +20,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Add babel, babel configuration [(4)]
 - Add Auht handler token middlewares [(7)]
 - Add create official class api with bearer headers middleware [(8)]
+- Add Query representatives and payerCompanyForRepresentative
 
 ### Fixed
 - Add environment var to docker-compose [(6)]
