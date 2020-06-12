@@ -88,6 +88,10 @@ const testType = gql`
   input ConfirmedPaymentFilterInput{
     payer_id: Int!
   } 
+  input setRepresentativeFavoritePayerInput{
+    payer_id: Int!
+    user_id: Int!
+  } 
   
   type Query {
     Services : Available
@@ -100,6 +104,7 @@ const testType = gql`
     newEnterprisePayer(enterprise_id: Int! ): enterprisePayerAssociation
     asssignRepresentativeToPayerEnterprise(input: AssignPayerRepresentativeInput): [Representative]
     confirmedPayment(input: ConfirmedPaymentInput): [ConfirmedPayment]
+    setRepresentativeFavoritePayer(input: setRepresentativeFavoritePayerInput): Representative
     
   }
   `;

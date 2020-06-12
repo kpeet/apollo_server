@@ -28,6 +28,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Add Mutation confirmForgotPassword, it change the user password[(16)]
 - Add Mutation confirmedPayment(POST)[(17)]
 - Add Query confirmedPayment[(17)]
+- Add Mutation setRepresentativeFavoritePayer[()]
 
 ### Fixed
 - Add environment var to docker-compose [(6)]
@@ -69,3 +70,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [(15)]: https://bitbucket.org/cumplo/srm-apollo-server/pull-requests/15/
 [(16)]: https://bitbucket.org/cumplo/srm-apollo-server/pull-requests/16/
 [(17)]: https://bitbucket.org/cumplo/srm-apollo-server/pull-requests/17/
+[()]: https://bitbucket.org/cumplo/srm-apollo-server/pull-requests//

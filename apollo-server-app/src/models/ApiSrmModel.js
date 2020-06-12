@@ -64,6 +64,7 @@ class SrmAPI extends RESTDataSource {
         );
         return payer;
     };
+
     //Agregar un pago confirmado
     async confirmedPayment(payer_id, confirmed_payment_payload) {
 
@@ -74,6 +75,7 @@ class SrmAPI extends RESTDataSource {
         );
         return payer;
     };
+
     //Obtener lista de pagos confirmados por pagador
     async getConfirmedPayment(payer_id, confirmed_payment_payload) {
 
@@ -81,6 +83,18 @@ class SrmAPI extends RESTDataSource {
         const confirmed_payment = await this.get(
             `payers/${payer_id}/confirmed_payment/`
         );
+        return confirmed_payment;
+    };
+
+    //Asignar empresa pagadora a representante
+    async setRepresentativeFavoritePayer(payer_id, user_representative_id) {
+
+        const payload =  {"payer": payer_id};
+        const confirmed_payment = await this.post(
+            `representatives/${user_representative_id}/set_favorite_payer/`,
+            payload,
+        );
+
         return confirmed_payment;
     };
 }
