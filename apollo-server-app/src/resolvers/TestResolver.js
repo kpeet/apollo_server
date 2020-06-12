@@ -16,6 +16,7 @@ const resolvers = {
         confirmedPayment: async (_source, { filters }, { dataSources }) => {
             try{
                 const result = await dataSources.SrmAPI.getConfirmedPayment(filters.payer_id,filters);
+                //TODO: Falta implementar paginado
                 return result.results;
             }catch(error){
                 console.log(error);
@@ -55,7 +56,18 @@ const resolvers = {
         confirmedPayment: async (_source, { input }, { dataSources }) => {
             try{
                 const result = await dataSources.SrmAPI.confirmedPayment(input.payer_id,input);
+                //TODO: Falta implementar paginado
                 return result.results;
+            }catch(error){
+                console.log(error);
+                throw error;
+            }
+        },
+        setRepresentativeFavoritePayer: async (_source, { input }, { dataSources }) => {
+
+            try{
+                const result = await dataSources.SrmAPI.setRepresentativeFavoritePayer(input.payer_id,input.user_id);
+                return result;
             }catch(error){
                 console.log(error);
                 throw error;

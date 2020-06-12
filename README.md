@@ -40,6 +40,7 @@ listar empresas pagadoras del representante(Empresa-Pagadora-Representante)[Quer
 
 Crear un pago Confirmado [mutation confirmedPayment ]
 Listar los pagos confirmados [Query confirmedPayment]
+Setear empresa pagadora favorita de un representante [mutation setRepresentativeFavoritePayer]
 
 
 
