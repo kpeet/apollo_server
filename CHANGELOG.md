@@ -26,6 +26,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Add Mutation enterprises, Create Emterprise[(16)]
 - Add Mutation forgotPassword, it allow the change of the user password [(16)]
 - Add Mutation confirmForgotPassword, it change the user password[(16)]
+- Add Mutation confirmedPayment(POST)[(17)]
+- Add Query confirmedPayment[(17)]
 
 ### Fixed
 - Add environment var to docker-compose [(6)]
@@ -66,3 +68,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [(14)]: https://bitbucket.org/cumplo/srm-apollo-server/pull-requests/14/
 [(15)]: https://bitbucket.org/cumplo/srm-apollo-server/pull-requests/15/
 [(16)]: https://bitbucket.org/cumplo/srm-apollo-server/pull-requests/16/
+[(17)]: https://bitbucket.org/cumplo/srm-apollo-server/pull-requests/17/
