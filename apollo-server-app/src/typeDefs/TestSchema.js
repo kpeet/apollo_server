@@ -84,12 +84,16 @@ const testType = gql`
     provider_document_number: String!
     user: Int!
     invoices: [InvoiceInput]
+  }
+  input ConfirmedPaymentFilterInput{
+    payer_id: Int!
   } 
   
   type Query {
     Services : Available
     representatives: [Representative]
     payerCompanyForRepresentative(representantive_id: Int! ): payersRepresentative
+    confirmedPayment(filters: ConfirmedPaymentFilterInput): [ConfirmedPayment]
   }
   extend type Mutation {
     enterprises(input: EnterpriseInput): Enterprise

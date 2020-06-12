@@ -13,6 +13,15 @@ const resolvers = {
             const result = await dataSources.SrmAPI.getPayerCompanyForRepresentative(representantive_id);
             return result;
         },
+        confirmedPayment: async (_source, { filters }, { dataSources }) => {
+            try{
+                const result = await dataSources.SrmAPI.getConfirmedPayment(filters.payer_id,filters);
+                return result.results;
+            }catch(error){
+                console.log(error);
+                throw error;
+            }
+        },
     },
     Mutation: {
         enterprises: async (_source, { input }, { dataSources }) => {

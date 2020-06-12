@@ -39,7 +39,7 @@ asociar empresa pagadora a representante(Empresa-Pagadora-Representante)[mutatio
 listar empresas pagadoras del representante(Empresa-Pagadora-Representante)[Query payerCompanyForRepresentative]
 
 Crear un pago Confirmado [mutation confirmedPayment ]
-Listar los pagos confirmados [Query ...]
+Listar los pagos confirmados [Query confirmedPayment]
 
 
 
