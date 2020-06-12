@@ -74,7 +74,7 @@ class SrmAPI extends RESTDataSource {
         );
         return payer;
     };
-    //Agregar un pago confirmado
+    //Obtener lista de pagos confirmados por pagador
     async getConfirmedPayment(payer_id, confirmed_payment_payload) {
 
         const payload = confirmed_payment_payload;
