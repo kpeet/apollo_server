@@ -64,6 +64,16 @@ class SrmAPI extends RESTDataSource {
         );
         return payer;
     };
+    //Agregar un pago confirmado
+    async confirmedPayment(payer_id, confirmed_payment_payload) {
+
+        const payload = confirmed_payment_payload;
+        const payer = await this.post(
+            `payers/${payer_id}/confirmed_payment/`, // api django path
+            payload, // request body
+        );
+        return payer;
+    };
 }
 
 export default SrmAPI;

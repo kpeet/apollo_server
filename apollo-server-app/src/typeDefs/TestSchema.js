@@ -42,6 +42,21 @@ const testType = gql`
     favorite: Enterprise
     payers: [Enterprise]
   }
+  
+  type Invoice{
+    id: ID
+    amount: Float
+    issuance_date: String
+    document_number: Int
+  }
+  type ConfirmedPayment{
+    id: ID
+    amount: Float
+    payment_date: String
+    provider_document_number: String
+    user: Int
+    invoices: [Invoice]
+  }
   input EnterpriseInput {
     name: String!
     business_name: String!
@@ -55,6 +70,20 @@ const testType = gql`
     payer_id: Int!
     representatives: [Int]
     
+  }
+  input InvoiceInput {
+    amount: Float!
+    issuance_date: String!
+    document_number: Int!
+    
+  } 
+  input ConfirmedPaymentInput {
+    payer_id: Int!
+    amount: Float!
+    payment_date: String!
+    provider_document_number: String!
+    user: Int!
+    invoices: [InvoiceInput]
   } 
   
   type Query {
@@ -66,6 +95,7 @@ const testType = gql`
     enterprises(input: EnterpriseInput): Enterprise
     newEnterprisePayer(enterprise_id: Int! ): enterprisePayerAssociation
     asssignRepresentativeToPayerEnterprise(input: AssignPayerRepresentativeInput): [Representative]
+    confirmedPayment(input: ConfirmedPaymentInput): [ConfirmedPayment]
     
   }
   `;

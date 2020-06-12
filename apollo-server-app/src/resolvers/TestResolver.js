@@ -43,6 +43,15 @@ const resolvers = {
                 throw error;
             }
         },
+        confirmedPayment: async (_source, { input }, { dataSources }) => {
+            try{
+                const result = await dataSources.SrmAPI.confirmedPayment(input.payer_id,input);
+                return result.results;
+            }catch(error){
+                console.log(error);
+                throw error;
+            }
+        },
 
     }
 
