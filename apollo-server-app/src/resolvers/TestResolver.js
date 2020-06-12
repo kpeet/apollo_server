@@ -9,7 +9,8 @@ const resolvers = {
             return result.results;
         },
 
-        payerCompanyForRepresentative: async (_source, {representantive_id}, {dataSources}) => {
+        payerCompanyForRepresentative: async (_source, {input}, {dataSources}) => {
+            const representantive_id=input.representantive_id
             const result = await dataSources.SrmAPI.getPayerCompanyForRepresentative(representantive_id);
             return result;
         },

@@ -91,12 +91,15 @@ const testType = gql`
   input setRepresentativeFavoritePayerInput{
     payer_id: Int!
     user_id: Int!
+  }  
+  input RepresentantiveInput {
+    representantive_id: Int! 
   } 
   
   type Query {
     Services : Available
     representatives: [Representative]
-    payerCompanyForRepresentative(representantive_id: Int! ): payersRepresentative
+    payerCompanyForRepresentative(input: RepresentantiveInput): payersRepresentative
     confirmedPayment(filters: ConfirmedPaymentFilterInput): [ConfirmedPayment]
   }
   extend type Mutation {
