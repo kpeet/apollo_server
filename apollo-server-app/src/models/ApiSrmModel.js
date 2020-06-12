@@ -86,7 +86,7 @@ class SrmAPI extends RESTDataSource {
         return confirmed_payment;
     };
 
-    //Obtener lista de pagos confirmados por pagador
+    //Asignar empresa pagadora a representante
     async setRepresentativeFavoritePayer(payer_id, user_representative_id) {
 
         const payload =  {"payer": payer_id};
