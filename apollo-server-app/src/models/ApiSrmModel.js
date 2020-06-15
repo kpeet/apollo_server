@@ -78,7 +78,7 @@ class SrmAPI extends RESTDataSource {
     };
 
     //Obtener lista de pagos confirmados por pagador
-    async getConfirmedPayment(payer_id, confirmed_payment_state_filter) {
+    async getConfirmedPaymentByPayer(payer_id, confirmed_payment_state_filter) {
 
         //TODO: modificar el page_size=1000 por sistema de paginado
         const confirmed_payment = await this.get(
@@ -99,14 +99,24 @@ class SrmAPI extends RESTDataSource {
         return confirmed_payment;
     };
 
-   //Conconfirmed  Payment Close (cierre de pago confirmado)
+   //Confirmed  Payment Close (cierre de pago confirmado)
    async confirmedPaymentClose(confirmed_payment_id){
      const payload = {};
      const response = await this.post(
        `confirmed_payments/${confirmed_payment_id}/close/`,
         payload,
       );
+     return response;
    };
+    //Get confirmed Payment by id
+    async getConfirmedPayment(confirmed_payment_id){
+        const response = await this.get(
+            `confirmed_payments/${confirmed_payment_id}/`
+        );
+        return response;
+    };
+
+
 }
 
 export default SrmAPI;
