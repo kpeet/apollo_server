@@ -87,6 +87,8 @@ const testType = gql`
   }
   input ConfirmedPaymentFilterInput{
     payer_id: Int!
+    confirmed_payment_state:String
+    
   }
   input confirmedPaymentCloseInput{
     confirmed_payment_id: Int!
