@@ -16,7 +16,10 @@ const resolvers = {
         },
         confirmedPayment: async (_source, { filters }, { dataSources }) => {
             try{
-                const result = await dataSources.SrmAPI.getConfirmedPayment(filters.payer_id,filters);
+
+                const confirmed_payment_state_filter=  filters.confirmed_payment_state? filters.confirmed_payment_state: "";
+
+                const result = await dataSources.SrmAPI.getConfirmedPayment(filters.payer_id,confirmed_payment_state_filter);
                 //TODO: Falta implementar paginado
                 return result.results;
             }catch(error){

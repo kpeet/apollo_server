@@ -29,7 +29,8 @@ class SrmAPI extends RESTDataSource {
 
     //Obtener lista de empresas pagadoras en función al representante
     async getPayerCompanyForRepresentative(input) {
-        const services = await this.get(`representatives/${input}/payers`);
+        //TODO: modificar el page_size=1000 por sistema de paginado
+        const services = await this.get(`representatives/${input}/payers/&page_size=1000`);
         return services;
     };
 
@@ -77,11 +78,11 @@ class SrmAPI extends RESTDataSource {
     };
 
     //Obtener lista de pagos confirmados por pagador
-    async getConfirmedPayment(payer_id, confirmed_payment_payload) {
+    async getConfirmedPayment(payer_id, confirmed_payment_state_filter) {
 
-        const payload = confirmed_payment_payload;
+        //TODO: modificar el page_size=1000 por sistema de paginado
         const confirmed_payment = await this.get(
-            `payers/${payer_id}/confirmed_payment/`
+            `payers/${payer_id}/confirmed_payment/?state=${confirmed_payment_state_filter}&page_size=1000`
         );
         return confirmed_payment;
     };
