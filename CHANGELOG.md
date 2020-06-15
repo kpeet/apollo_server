@@ -11,7 +11,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Refactor code, es6 standar [(4)]
 - Refactor code move auth model [(8)]
 - Update register method (schema and model) [(15)]
-- Improove split token [(15)] 
+- Improove split token [(15)]
 
 ## Added
 - Add Srm login with access and refresh token (mutation autenticarUsuario)[(3)]
@@ -28,7 +28,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Add Mutation confirmForgotPassword, it change the user password[(16)]
 - Add Mutation confirmedPayment(POST)[(17)]
 - Add Query confirmedPayment[(17)]
-- Add Mutation setRepresentativeFavoritePayer[()]
+- Add Mutation setRepresentativeFavoritePayer[(19)]
+- Add service close confirmed payment [(21)]
 
 ### Fixed
 - Add environment var to docker-compose [(6)]
@@ -38,6 +39,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Allow special headers field in cors preflight response [(12)]
 - Allow special headers field in cors preflight response [(13)]
 - Finish solution cors preflight response [(14)]
+- Fix detail on payer company [(20)]
 
 ### DevOps
 - Add node_modules to volumen [()]
@@ -70,4 +72,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [(15)]: https://bitbucket.org/cumplo/srm-apollo-server/pull-requests/15/
 [(16)]: https://bitbucket.org/cumplo/srm-apollo-server/pull-requests/16/
 [(17)]: https://bitbucket.org/cumplo/srm-apollo-server/pull-requests/17/
-[()]: https://bitbucket.org/cumplo/srm-apollo-server/pull-requests//
+[(19)]: https://bitbucket.org/cumplo/srm-apollo-server/pull-requests/19/
+[(20)]: https://bitbucket.org/cumplo/srm-apollo-server/pull-requests/20/
+[(21)]: https://bitbucket.org/cumplo/srm-apollo-server/pull-requests/21/

@@ -97,6 +97,15 @@ class SrmAPI extends RESTDataSource {
 
         return confirmed_payment;
     };
+
+   //Conconfirmed  Payment Close (cierre de pago confirmado)
+   async confirmedPaymentClose(confirmed_payment_id){
+     const payload = {};
+     const response = await this.post(
+       `confirmed_payments/${confirmed_payment_id}/close/`,
+        payload,
+      );
+   };
 }
 
 export default SrmAPI;
