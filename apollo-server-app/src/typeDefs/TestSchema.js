@@ -42,7 +42,7 @@ const testType = gql`
     favorite: Enterprise
     payers: [Enterprise]
   }
-  
+
   type Invoice{
     id: ID
     amount: Float
@@ -65,18 +65,18 @@ const testType = gql`
     address: String!
     postal_code: String!
     document_number:String!
-  } 
+  }
   input AssignPayerRepresentativeInput {
     payer_id: Int!
     representatives: [Int]
-    
+
   }
   input InvoiceInput {
     amount: Float!
     issuance_date: String!
     document_number: Int!
-    
-  } 
+
+  }
   input ConfirmedPaymentInput {
     payer_id: Int!
     amount: Float!
@@ -87,15 +87,17 @@ const testType = gql`
   }
   input ConfirmedPaymentFilterInput{
     payer_id: Int!
-  } 
+  }
+  input confirmedPaymentCloseInput{
+    confirmed_payment_id: Int!
+  }
   input setRepresentativeFavoritePayerInput{
     payer_id: Int!
     user_id: Int!
-  }  
+  }
   input RepresentantiveInput {
-    representantive_id: Int! 
-  } 
-  
+    representantive_id: Int!
+  }
   type Query {
     Services : Available
     representatives: [Representative]
@@ -107,8 +109,9 @@ const testType = gql`
     newEnterprisePayer(enterprise_id: Int! ): enterprisePayerAssociation
     asssignRepresentativeToPayerEnterprise(input: AssignPayerRepresentativeInput): [Representative]
     confirmedPayment(input: ConfirmedPaymentInput): [ConfirmedPayment]
+    confirmedPaymentClose(input: confirmedPaymentCloseInput): ConfirmedPayment
     setRepresentativeFavoritePayer(input: setRepresentativeFavoritePayerInput): Representative
-    
+
   }
   `;
 

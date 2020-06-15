@@ -74,6 +74,15 @@ const resolvers = {
                 throw error;
             }
         },
+        confirmedPaymentClose: async (_source, { input }, { dataSources }) => {
+            try{
+                const result = await dataSources.SrmAPI.confirmedPaymentClose(input.confirmed_payment_id);
+                return result;
+            }catch(error){
+                console.log(error);
+                throw error;
+            }
+        },
 
     }
 
