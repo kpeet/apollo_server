@@ -30,7 +30,7 @@ class SrmAPI extends RESTDataSource {
     //Obtener lista de empresas pagadoras en función al representante
     async getPayerCompanyForRepresentative(input) {
         //TODO: modificar el page_size=1000 por sistema de paginado
-        const services = await this.get(`representatives/${input}/payers/&page_size=1000`);
+        const services = await this.get(`representatives/${input}/payers/?page_size=1000`);
         return services;
     };
 
