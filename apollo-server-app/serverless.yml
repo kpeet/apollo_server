@@ -2,7 +2,7 @@
 
 service:
   name: srm-apollo
-plugins:  
+plugins:
   - serverless-domain-manager
   - serverless-webpack
   - serverless-offline
