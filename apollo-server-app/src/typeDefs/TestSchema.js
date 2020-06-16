@@ -58,6 +58,8 @@ const testType = gql`
     invoices: [Invoice]
     payer_provider: Int
     representative: Int
+    state: String
+
     
   }
   input EnterpriseInput {
