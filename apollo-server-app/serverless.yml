@@ -12,7 +12,7 @@ provider:
   region: us-west-2
   stage: ${opt:stage, 'development'}
   environment:
-    API_SRM: http://api-srm-cumplo:8000
+    API_SRM: https://api-srm.${self:provider.stage}.cumplo.cl
 functions:
   graphql:
     handler: server.graphqlHandler
