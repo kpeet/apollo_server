@@ -33,7 +33,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Add state filter to confirmed payment [(22)]
 - Add confirmedPaymentDetail [(23)]
 - Add field state to confirmedPayment's query[(25)]
-- Add representative_document_number on ConfirmedPayment[()]
+- Add representative_document_number on ConfirmedPayment[(26)]
 
 ### Fixed
 - Add environment var to docker-compose [(6)]
@@ -82,4 +82,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [(22)]: https://bitbucket.org/cumplo/srm-apollo-server/pull-requests/22/
 [(23)]: https://bitbucket.org/cumplo/srm-apollo-server/pull-requests/23/
 [(25)]: https://bitbucket.org/cumplo/srm-apollo-server/pull-requests/25/
-[()]: https://bitbucket.org/cumplo/srm-apollo-server/pull-requests//
+[(26)]: https://bitbucket.org/cumplo/srm-apollo-server/pull-requests/26/
