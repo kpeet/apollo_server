@@ -59,8 +59,7 @@ const testType = gql`
     payer_provider: Int
     representative: Int
     state: String
-
-    
+    representative_document_number: String
   }
   input EnterpriseInput {
     name: String!

@@ -2,7 +2,7 @@
 
 service:
   name: srm-apollo
-plugins:  
+plugins:
   - serverless-domain-manager
   - serverless-webpack
   - serverless-offline
@@ -12,7 +12,7 @@ provider:
   region: us-west-2
   stage: ${opt:stage, 'development'}
   environment:
-    API_SRM: https://api-srm.${self:provider.stage}.cumplo.cl
+    API_SRM: http://api-srm-cumplo:8000
 functions:
   graphql:
     handler: server.graphqlHandler
