@@ -118,6 +118,16 @@ const resolvers = {
                 throw error;
             }
         },
+        setRepresentativeFavoriteProvider: async (_source, { input }, { dataSources }) => {
+
+            try{
+                const result = await dataSources.SrmAPI.setRepresentativeFavoriteProvider(input.provider_id,input.user_id);
+                return result;
+            }catch(error){
+                console.log(error);
+                throw error;
+            }
+        },
 
     }
 

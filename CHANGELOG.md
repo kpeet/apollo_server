@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 ## Added
 - Add Mutation newEnterpriseProvider[()]
+- Add Mutation asssignRepresentativeToProviderEnterprise[()]
+- Add Mutation setRepresentativeFavoriteProvider[()]
 
 ### Changed
 - Change input of asssignRepresentativeToPayerEnterprise service [()]

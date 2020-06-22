@@ -129,14 +129,25 @@ class SrmAPI extends RESTDataSource {
         return providers;
     };
     //Asignar lista de representantes a empresas proveedora
-    async postAsssignRepresentativeToProviderEnterprise(payer_id, representantive_list) {
+    async postAsssignRepresentativeToProviderEnterprise(provider_id, representantive_list) {
 
         const payload = {"representatives": representantive_list};
         const payer = await this.post(
-            `payers/${payer_id}/representatives/`, // api django path
+            `providers/${provider_id}/representatives/`, // api django path
             payload, // request body
         );
         return payer;
+    };
+    //Asignar empresa proveedora a representante
+    async setRepresentativeFavoriteProvider(provider_id, user_representative_id) {
+
+        const payload =  {"provider": provider_id};
+        const confirmed_payment = await this.put(
+            `representatives/${user_representative_id}/set_favorite_provider/`,
+            payload,
+        );
+
+        return confirmed_payment;
     };
 
 

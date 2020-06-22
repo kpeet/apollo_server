@@ -119,6 +119,10 @@ const testType = gql`
     payer_id: Int!
     user_id: Int!
   }
+  input setRepresentativeFavoriteProviderInput{
+    provider_id: Int!
+    user_id: Int!
+  }
   input RepresentantiveInput {
     representantive_id: Int!
   }
@@ -138,6 +142,7 @@ const testType = gql`
     confirmedPayment(input: ConfirmedPaymentInput): [ConfirmedPayment]
     confirmedPaymentClose(input: confirmedPaymentCloseInput): ConfirmedPayment
     setRepresentativeFavoritePayer(input: setRepresentativeFavoritePayerInput): Representative
+    setRepresentativeFavoriteProvider(input: setRepresentativeFavoriteProviderInput): Representative
 
   }
   `;
