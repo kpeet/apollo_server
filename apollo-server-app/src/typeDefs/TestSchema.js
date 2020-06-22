@@ -85,6 +85,11 @@ const testType = gql`
     representatives: [CreateRepresentativeInput]
 
   }
+  input AssignProviderRepresentativeInput {
+    provider_id: Int!
+    representatives: [CreateRepresentativeInput]
+
+  }
   input InvoiceInput {
     amount: Float!
     issuance_date: String!
@@ -129,6 +134,7 @@ const testType = gql`
     newEnterpriseProvider(enterprise_id: Int! ): enterpriseAssociation
     newEnterprisePayer(enterprise_id: Int! ): enterprisePayerAssociation
     asssignRepresentativeToPayerEnterprise(input: AssignPayerRepresentativeInput): [Representative]
+    asssignRepresentativeToProviderEnterprise(input: AssignProviderRepresentativeInput): [Representative]
     confirmedPayment(input: ConfirmedPaymentInput): [ConfirmedPayment]
     confirmedPaymentClose(input: confirmedPaymentCloseInput): ConfirmedPayment
     setRepresentativeFavoritePayer(input: setRepresentativeFavoritePayerInput): Representative

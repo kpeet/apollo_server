@@ -118,7 +118,7 @@ class SrmAPI extends RESTDataSource {
 
 
     //PROVEEDORES
-    //Crear Empresa pagadora en función a empresa creada
+    //Crear Empresa proveedora en función a empresa creada
     async postProvider(input) {
 
         const payload = {"enterprise": input};
@@ -128,6 +128,17 @@ class SrmAPI extends RESTDataSource {
         );
         return providers;
     };
+    //Asignar lista de representantes a empresas proveedora
+    async postAsssignRepresentativeToProviderEnterprise(payer_id, representantive_list) {
+
+        const payload = {"representatives": representantive_list};
+        const payer = await this.post(
+            `payers/${payer_id}/representatives/`, // api django path
+            payload, // request body
+        );
+        return payer;
+    };
+
 
 
 

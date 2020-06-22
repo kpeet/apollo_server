@@ -109,6 +109,15 @@ const resolvers = {
                 throw error;
             }
         },
+        asssignRepresentativeToProviderEnterprise: async (_source, { input }, { dataSources }) => {
+            try{
+                const result = await dataSources.SrmAPI.postAsssignRepresentativeToProviderEnterprise(input.provider_id,input.representatives);
+                return result;
+            }catch(error){
+                console.log(error);
+                throw error;
+            }
+        },
 
     }
 
