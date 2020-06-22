@@ -98,6 +98,18 @@ const resolvers = {
             }
         },
 
+        //PROVEEDORES
+        newEnterpriseProvider: async (_source, { enterprise_id }, { dataSources }) => {
+            try{
+
+                const result = await dataSources.SrmAPI.postProvider(enterprise_id);
+                return result;
+            }catch(error){
+                console.log(error);
+                throw error;
+            }
+        },
+
     }
 
 };

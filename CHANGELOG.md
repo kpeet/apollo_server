@@ -5,6 +5,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+## Added
+- Add Mutation newEnterpriseProvider[()]
+
 ### Changed
 - Change input of asssignRepresentativeToPayerEnterprise service [()]
 - Change input of asssignRepresentativeToPayerEnterprise service [()]
@@ -91,3 +94,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [(23)]: https://bitbucket.org/cumplo/srm-apollo-server/pull-requests/23/
 [(25)]: https://bitbucket.org/cumplo/srm-apollo-server/pull-requests/25/
 [(26)]: https://bitbucket.org/cumplo/srm-apollo-server/pull-requests/26/
+[()]: https://bitbucket.org/cumplo/srm-apollo-server/pull-requests//

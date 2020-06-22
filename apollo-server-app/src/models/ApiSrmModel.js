@@ -117,6 +117,20 @@ class SrmAPI extends RESTDataSource {
     };
 
 
+    //PROVEEDORES
+    //Crear Empresa pagadora en función a empresa creada
+    async postProvider(input) {
+
+        const payload = {"enterprise": input};
+        const providers = await this.post(
+            `providers/`, // api django path
+            payload, // request body
+        );
+        return providers;
+    };
+
+
+
 }
 
 export default SrmAPI;

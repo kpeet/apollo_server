@@ -38,6 +38,12 @@ const testType = gql`
     updated: String
     enterprise: Int
   }
+  type enterpriseAssociation {
+    id: ID
+    created: String!
+    updated: String
+    enterprise: Int
+  }
   type payersRepresentative {
     favorite: Enterprise
     payers: [Enterprise]
@@ -120,6 +126,7 @@ const testType = gql`
   }
   extend type Mutation {
     enterprises(input: EnterpriseInput): Enterprise
+    newEnterpriseProvider(enterprise_id: Int! ): enterpriseAssociation
     newEnterprisePayer(enterprise_id: Int! ): enterprisePayerAssociation
     asssignRepresentativeToPayerEnterprise(input: AssignPayerRepresentativeInput): [Representative]
     confirmedPayment(input: ConfirmedPaymentInput): [ConfirmedPayment]
