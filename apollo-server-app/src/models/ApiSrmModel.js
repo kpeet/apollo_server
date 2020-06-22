@@ -70,7 +70,7 @@ class SrmAPI extends RESTDataSource {
     async confirmedPayment(payer_id, confirmed_payment_payload) {
 
         const payload = confirmed_payment_payload;
-        const payer = await this.post(
+        const payer = await this.put(
             `payers/${payer_id}/confirmed_payment/`, // api django path
             payload, // request body
         );
@@ -91,7 +91,7 @@ class SrmAPI extends RESTDataSource {
     async setRepresentativeFavoritePayer(payer_id, user_representative_id) {
 
         const payload =  {"payer": payer_id};
-        const confirmed_payment = await this.post(
+        const confirmed_payment = await this.put(
             `representatives/${user_representative_id}/set_favorite_payer/`,
             payload,
         );
@@ -115,6 +115,42 @@ class SrmAPI extends RESTDataSource {
         );
         return response;
     };
+
+
+    //PROVEEDORES
+    //Crear Empresa proveedora en función a empresa creada
+    async postProvider(input) {
+
+        const payload = {"enterprise": input};
+        const providers = await this.post(
+            `providers/`, // api django path
+            payload, // request body
+        );
+        return providers;
+    };
+    //Asignar lista de representantes a empresas proveedora
+    async postAsssignRepresentativeToProviderEnterprise(provider_id, representantive_list) {
+
+        const payload = {"representatives": representantive_list};
+        const payer = await this.post(
+            `providers/${provider_id}/representatives/`, // api django path
+            payload, // request body
+        );
+        return payer;
+    };
+    //Asignar empresa proveedora a representante
+    async setRepresentativeFavoriteProvider(provider_id, user_representative_id) {
+
+        const payload =  {"provider": provider_id};
+        const confirmed_payment = await this.put(
+            `representatives/${user_representative_id}/set_favorite_provider/`,
+            payload,
+        );
+
+        return confirmed_payment;
+    };
+
+
 
 
 }

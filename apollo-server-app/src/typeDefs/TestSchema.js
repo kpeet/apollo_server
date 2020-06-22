@@ -38,6 +38,12 @@ const testType = gql`
     updated: String
     enterprise: Int
   }
+  type enterpriseAssociation {
+    id: ID
+    created: String!
+    updated: String
+    enterprise: Int
+  }
   type payersRepresentative {
     favorite: Enterprise
     payers: [Enterprise]
@@ -70,9 +76,18 @@ const testType = gql`
     postal_code: String!
     document_number:String!
   }
+  input CreateRepresentativeInput{
+    id: Int!
+    can_edit: Boolean!
+  }
   input AssignPayerRepresentativeInput {
     payer_id: Int!
-    representatives: [Int]
+    representatives: [CreateRepresentativeInput]
+
+  }
+  input AssignProviderRepresentativeInput {
+    provider_id: Int!
+    representatives: [CreateRepresentativeInput]
 
   }
   input InvoiceInput {
@@ -104,6 +119,10 @@ const testType = gql`
     payer_id: Int!
     user_id: Int!
   }
+  input setRepresentativeFavoriteProviderInput{
+    provider_id: Int!
+    user_id: Int!
+  }
   input RepresentantiveInput {
     representantive_id: Int!
   }
@@ -116,11 +135,14 @@ const testType = gql`
   }
   extend type Mutation {
     enterprises(input: EnterpriseInput): Enterprise
+    newEnterpriseProvider(enterprise_id: Int! ): enterpriseAssociation
     newEnterprisePayer(enterprise_id: Int! ): enterprisePayerAssociation
     asssignRepresentativeToPayerEnterprise(input: AssignPayerRepresentativeInput): [Representative]
+    asssignRepresentativeToProviderEnterprise(input: AssignProviderRepresentativeInput): [Representative]
     confirmedPayment(input: ConfirmedPaymentInput): [ConfirmedPayment]
     confirmedPaymentClose(input: confirmedPaymentCloseInput): ConfirmedPayment
     setRepresentativeFavoritePayer(input: setRepresentativeFavoritePayerInput): Representative
+    setRepresentativeFavoriteProvider(input: setRepresentativeFavoriteProviderInput): Representative
 
   }
   `;

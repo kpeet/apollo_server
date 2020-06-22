@@ -98,6 +98,37 @@ const resolvers = {
             }
         },
 
+        //PROVEEDORES
+        newEnterpriseProvider: async (_source, { enterprise_id }, { dataSources }) => {
+            try{
+
+                const result = await dataSources.SrmAPI.postProvider(enterprise_id);
+                return result;
+            }catch(error){
+                console.log(error);
+                throw error;
+            }
+        },
+        asssignRepresentativeToProviderEnterprise: async (_source, { input }, { dataSources }) => {
+            try{
+                const result = await dataSources.SrmAPI.postAsssignRepresentativeToProviderEnterprise(input.provider_id,input.representatives);
+                return result;
+            }catch(error){
+                console.log(error);
+                throw error;
+            }
+        },
+        setRepresentativeFavoriteProvider: async (_source, { input }, { dataSources }) => {
+
+            try{
+                const result = await dataSources.SrmAPI.setRepresentativeFavoriteProvider(input.provider_id,input.user_id);
+                return result;
+            }catch(error){
+                console.log(error);
+                throw error;
+            }
+        },
+
     }
 
 };
