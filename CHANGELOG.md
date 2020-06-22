@@ -5,6 +5,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+### Changed
+- Change input of asssignRepresentativeToPayerEnterprise service [()]
+- Change input of asssignRepresentativeToPayerEnterprise service [()]
+- Change confirmedPayment in model, POST to PUT method [()]
+- Change setRepresentativeFavoritePayer in model, POST to PUT method [()]
 
 ## [v1.0.0] - 2020-06-19
 

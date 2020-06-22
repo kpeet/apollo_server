@@ -70,7 +70,7 @@ class SrmAPI extends RESTDataSource {
     async confirmedPayment(payer_id, confirmed_payment_payload) {
 
         const payload = confirmed_payment_payload;
-        const payer = await this.post(
+        const payer = await this.put(
             `payers/${payer_id}/confirmed_payment/`, // api django path
             payload, // request body
         );
@@ -91,7 +91,7 @@ class SrmAPI extends RESTDataSource {
     async setRepresentativeFavoritePayer(payer_id, user_representative_id) {
 
         const payload =  {"payer": payer_id};
-        const confirmed_payment = await this.post(
+        const confirmed_payment = await this.put(
             `representatives/${user_representative_id}/set_favorite_payer/`,
             payload,
         );

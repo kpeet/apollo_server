@@ -70,9 +70,13 @@ const testType = gql`
     postal_code: String!
     document_number:String!
   }
+  input CreateRepresentativeInput{
+    id: Int!
+    can_edit: Boolean!
+  }
   input AssignPayerRepresentativeInput {
     payer_id: Int!
-    representatives: [Int]
+    representatives: [CreateRepresentativeInput]
 
   }
   input InvoiceInput {
