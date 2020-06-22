@@ -6,15 +6,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 ## Added
-- Add Mutation newEnterpriseProvider[()]
-- Add Mutation asssignRepresentativeToProviderEnterprise[()]
-- Add Mutation setRepresentativeFavoriteProvider[()]
+- Add Mutation newEnterpriseProvider[(29)]
+- Add Mutation asssignRepresentativeToProviderEnterprise[(29)]
+- Add Mutation setRepresentativeFavoriteProvider[(29)]
 
 ### Changed
-- Change input of asssignRepresentativeToPayerEnterprise service [()]
-- Change input of asssignRepresentativeToPayerEnterprise service [()]
-- Change confirmedPayment in model, POST to PUT method [()]
-- Change setRepresentativeFavoritePayer in model, POST to PUT method [()]
+- Change input of asssignRepresentativeToPayerEnterprise service [(29)]
+- Change input of asssignRepresentativeToPayerEnterprise service [(29)]
+- Change confirmedPayment in model, POST to PUT method [(29)]
+- Change setRepresentativeFavoritePayer in model, POST to PUT method [(29)]
 
 ## [v1.0.0] - 2020-06-19
 
@@ -96,4 +96,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [(23)]: https://bitbucket.org/cumplo/srm-apollo-server/pull-requests/23/
 [(25)]: https://bitbucket.org/cumplo/srm-apollo-server/pull-requests/25/
 [(26)]: https://bitbucket.org/cumplo/srm-apollo-server/pull-requests/26/
-[()]: https://bitbucket.org/cumplo/srm-apollo-server/pull-requests//
+[(29)]: https://bitbucket.org/cumplo/srm-apollo-server/pull-requests/29/
