@@ -20,6 +20,11 @@ Funciones responsables de retornar los valores que existen en tu schema(TypeDefs
 dotend: variables de entorno  
 nodemon: reinicia el servidor a medida que cambian los archivos en desarrollo (-D)
 apollo-datasource-rest: Comunicación REST para apollo
+##Sprint 2
+Descripción servicios Apollo en confluence:
+
+https://cumplo.atlassian.net/wiki/spaces/SRM/pages/1019969552/Servicios+Apollo+Sprint+2
+
 
 ##Sprint 1 
 Descripción servicios Apollo en confluence:
