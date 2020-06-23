@@ -1,6 +1,6 @@
 import {gql} from "apollo-server-lambda";
 
-const testType = gql`
+const apiSrmType = gql`
   type Available {
     users: String
     permissions: String
@@ -126,12 +126,17 @@ const testType = gql`
   input RepresentantiveInput {
     representantive_id: Int!
   }
+  input payerProviderInput {
+    id: Int!
+  }
   type Query {
     Services : Available
     representatives: [Representative]
     payerCompanyForRepresentative(input: RepresentantiveInput): payersRepresentative
     confirmedPayment(filters: ConfirmedPaymentFilterInput): [ConfirmedPayment]
     confirmedPaymentDetail(input: IdInput): ConfirmedPayment
+    getPayerListFromProvider(input: payerProviderInput): [Enterprise]
+    getProviderListFromPayer(input: payerProviderInput): [Enterprise]
   }
   extend type Mutation {
     enterprises(input: EnterpriseInput): Enterprise
@@ -143,8 +148,7 @@ const testType = gql`
     confirmedPaymentClose(input: confirmedPaymentCloseInput): ConfirmedPayment
     setRepresentativeFavoritePayer(input: setRepresentativeFavoritePayerInput): Representative
     setRepresentativeFavoriteProvider(input: setRepresentativeFavoriteProviderInput): Representative
-
   }
   `;
 
-export default testType;
+export default apiSrmType;

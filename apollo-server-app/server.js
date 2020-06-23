@@ -16,7 +16,7 @@ import  {
   SrmAPI,
   TestResolver,
   TestSchema,
-} from './src/controllers/TestController';
+} from './src/controllers/ApiSrmController';
 
 /* Instance Apollo Server */
 const server = new ApolloServer({
