@@ -149,6 +149,24 @@ class SrmAPI extends RESTDataSource {
 
         return confirmed_payment;
     };
+    //Asignar empresa proveedora a representante
+    async getProviderListFromPayer(payer_id) {
+
+        const provider_list = await this.get(
+            `payers/${payer_id}/providers/`,
+        );
+
+        return provider_list;
+    };
+    //Asignar empresa proveedora a representante
+    async getPayerListFromProvider(provider_id) {
+
+        const payer_list = await this.get(
+            `providers/${provider_id}/payers/`
+        );
+
+        return payer_list;
+    };
 
 
 

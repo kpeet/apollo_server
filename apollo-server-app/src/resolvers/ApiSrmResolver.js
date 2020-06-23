@@ -38,6 +38,28 @@ const resolvers = {
                 throw error;
             }
         },
+        getPayerListFromProvider: async (_source, { input }, { dataSources }) => {
+            try{
+                const result = await dataSources.SrmAPI.getPayerListFromProvider(input.id);
+                console.log("RESULTADO");
+                console.log(result);
+                return result;
+            }catch(error){
+                console.log(error);
+                throw error;
+            }
+        },
+        getProviderListFromPayer: async (_source, { input }, { dataSources }) => {
+            try{
+                const result = await dataSources.SrmAPI.getProviderListFromPayer(input.id);
+                console.log("RESULTADO");
+                console.log(result);
+                return result;
+            }catch(error){
+                console.log(error);
+                throw error;
+            }
+        },
     },
     Mutation: {
         enterprises: async (_source, { input }, { dataSources }) => {
