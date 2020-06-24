@@ -167,6 +167,11 @@ class SrmAPI extends RESTDataSource {
 
         return payer_list;
     };
+    //Obtener lista de empresas pagadoras en función al representante
+    async getProvidersCompanyForRepresentative(input) {
+        const services = await this.get(`representatives/${input}/providers/`);
+        return services;
+    };
 
 
 

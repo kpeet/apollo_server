@@ -11,6 +11,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Add Mutation setRepresentativeFavoriteProvider[(29)]
 - Add query getPayerListFromProvider[(30)]
 - Add query getProviderListFromPayer[(30)]
+- Add query providerCompanyForRepresentative[(33)]
 
 ### Changed
 - Change input of asssignRepresentativeToPayerEnterprise service [(29)]
@@ -100,3 +101,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [(26)]: https://bitbucket.org/cumplo/srm-apollo-server/pull-requests/26/
 [(29)]: https://bitbucket.org/cumplo/srm-apollo-server/pull-requests/29/
 [(30)]: https://bitbucket.org/cumplo/srm-apollo-server/pull-requests/30/
+[(33)]: https://bitbucket.org/cumplo/srm-apollo-server/pull-requests/33/

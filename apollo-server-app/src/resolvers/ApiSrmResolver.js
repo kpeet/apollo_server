@@ -60,6 +60,11 @@ const resolvers = {
                 throw error;
             }
         },
+        providerCompanyForRepresentative: async (_source, {input}, {dataSources}) => {
+            const representantive_id=input.representantive_id
+            const result = await dataSources.SrmAPI.getProvidersCompanyForRepresentative(representantive_id);
+            return result;
+        },
     },
     Mutation: {
         enterprises: async (_source, { input }, { dataSources }) => {

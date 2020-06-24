@@ -48,7 +48,10 @@ const apiSrmType = gql`
     favorite: Enterprise
     payers: [Enterprise]
   }
-
+  type providersRepresentative {
+    favorite: Enterprise
+    providers: [Enterprise]
+  }
   type Invoice{
     id: ID
     amount: Float
@@ -133,6 +136,7 @@ const apiSrmType = gql`
     Services : Available
     representatives: [Representative]
     payerCompanyForRepresentative(input: RepresentantiveInput): payersRepresentative
+    providerCompanyForRepresentative(input: RepresentantiveInput): providersRepresentative
     confirmedPayment(filters: ConfirmedPaymentFilterInput): [ConfirmedPayment]
     confirmedPaymentDetail(input: IdInput): ConfirmedPayment
     getPayerListFromProvider(input: payerProviderInput): [Enterprise]
