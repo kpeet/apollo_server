@@ -27,6 +27,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Refactor code move auth model [(8)]
 - Update register method (schema and model) [(15)]
 - Improove split token [(15)]
+- Improve method providers by representative [(33)]
 
 ## Added
 - Add Srm login with access and refresh token (mutation autenticarUsuario)[(3)]
@@ -74,6 +75,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Delete environment SECRETA [(10)]
 
 [Unreleased]: https://bitbucket.org/cumplo/srm-apollo-server/branches/compare/devel..#diff
+[(34)]: https://bitbucket.org/cumplo/srm-apollo-server/pull-requests/34/
+
 [v1.0.0]: https://bitbucket.org/cumplo/api-srm/branch/release/v1.0.0
 
 [(1)]: https://bitbucket.org/cumplo/srm-apollo-server/pull-requests/1/
