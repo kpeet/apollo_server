@@ -32,6 +32,19 @@ const apiSrmType = gql`
     address: String
     postal_code: String
   }
+  type EnterpriseWithPayers {
+    id: String,
+    created: String
+    updated: String
+    name: String
+    business_name: String
+    document_number: String
+    country: String
+    city: String
+    address: String
+    postal_code: String,
+    payers: [Enterprise]
+  }
   type enterprisePayerAssociation {
     id: ID
     created: String!
@@ -51,6 +64,10 @@ const apiSrmType = gql`
   type providersRepresentative {
     favorite: Enterprise
     providers: [Enterprise]
+  }
+  type providersRepresentativeWithPayers{
+    favorite: Enterprise
+    providers: [EnterpriseWithPayers]
   }
   type Invoice{
     id: ID
@@ -113,7 +130,7 @@ const apiSrmType = gql`
   input ConfirmedPaymentFilterInput{
     payer_id: Int!
     confirmed_payment_state:String
-    
+
   }
   input confirmedPaymentCloseInput{
     confirmed_payment_id: Int!
@@ -136,7 +153,7 @@ const apiSrmType = gql`
     Services : Available
     representatives: [Representative]
     payerCompanyForRepresentative(input: RepresentantiveInput): payersRepresentative
-    providerCompanyForRepresentative(input: RepresentantiveInput): providersRepresentative
+    providerCompanyForRepresentative(input: RepresentantiveInput): providersRepresentativeWithPayers
     confirmedPayment(filters: ConfirmedPaymentFilterInput): [ConfirmedPayment]
     confirmedPaymentDetail(input: IdInput): ConfirmedPayment
     getPayerListFromProvider(input: payerProviderInput): [Enterprise]

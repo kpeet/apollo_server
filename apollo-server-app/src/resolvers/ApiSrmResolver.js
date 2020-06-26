@@ -63,7 +63,12 @@ const resolvers = {
         providerCompanyForRepresentative: async (_source, {input}, {dataSources}) => {
             const representantive_id=input.representantive_id
             const result = await dataSources.SrmAPI.getProvidersCompanyForRepresentative(representantive_id);
-            return result;
+            let providerWithPayers ={favorite:result.favorite, providers:[]};
+            for(let provider of result.providers){
+              provider['payers'] = await dataSources.SrmAPI.getPayerListFromProvider(provider.id);
+              providerWithPayers.providers.push(provider);
+            }
+            return providerWithPayers;
         },
     },
     Mutation: {
