@@ -1,5 +1,6 @@
 import {RESTDataSource} from 'apollo-datasource-rest';
 
+
 /* Official Api Methods */
 class SrmAPI extends RESTDataSource {
     constructor() {
@@ -194,6 +195,25 @@ class SrmAPI extends RESTDataSource {
 
         return confirmed_payment;
     };
+
+    //Obtener lista de pagos confirmados por proveedor
+    advanceSimulation( confirmed_amount,
+                       monthly_discount, advance_days) {
+
+        const advance_amount = Math.ceil(confirmed_amount / (1 + (monthly_discount / 30) * advance_days))
+
+
+        console.log(JSON.stringify(advance_amount));
+
+        const payload ={
+            advance_amount
+        }
+
+        return payload;
+    };
+
+
+
 }
 
 export default SrmAPI;

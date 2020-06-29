@@ -98,6 +98,19 @@ const resolvers = {
                 throw error;
             }
         },
+        advanceSimulation: (_source, { input }, { dataSources }) => {
+            try{
+
+
+                const result =  dataSources.SrmAPI.advanceSimulation(input.confirmed_amount,
+                    input.monthly_discount, input.advance_days);
+
+                return result;
+            }catch(error){
+                console.log(error);
+                throw error;
+            }
+        },
     },
     Mutation: {
         enterprises: async (_source, { input }, { dataSources }) => {
