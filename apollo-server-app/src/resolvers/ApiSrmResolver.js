@@ -27,6 +27,7 @@ const resolvers = {
                 throw error;
             }
         },
+
         confirmedPaymentDetail: async (_source, { input }, { dataSources }) => {
             try{
                 const result = await dataSources.SrmAPI.getConfirmedPayment(input.id);
@@ -69,6 +70,33 @@ const resolvers = {
               providerWithPayers.providers.push(provider);
             }
             return providerWithPayers;
+        },
+        providerConfirmedPayment: async (_source, { filters }, { dataSources }) => {
+            try{
+
+                const confirmed_payment_state_filter=  filters.confirmed_payment_state? filters.confirmed_payment_state: "";
+                const payer_enterprise_filter=  filters.payer_enterprise? filters.payer_enterprise: "";
+                const provider_enterprise_filter=  filters.provider_enterprise? filters.provider_enterprise: "";
+                const id_filter=  filters.id? filters.id: "";
+                const payment_date_filter=  filters.payment_date? filters.payment_date: "";
+                const amount_filter=  filters.amount? filters.amount: "";
+
+
+                const result = await dataSources.SrmAPI.getConfirmedPaymentByProvider(filters.provider_id,
+                    confirmed_payment_state_filter,
+                    payer_enterprise_filter,
+                    provider_enterprise_filter,
+                    id_filter,
+                    payment_date_filter,
+                    amount_filter,
+                    );
+
+                //TODO: Falta implementar paginado
+                return result.results;
+            }catch(error){
+                console.log(error);
+                throw error;
+            }
         },
     },
     Mutation: {

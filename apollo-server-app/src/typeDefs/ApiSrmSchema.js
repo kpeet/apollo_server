@@ -127,6 +127,15 @@ const apiSrmType = gql`
   input IdInput {
     id: Int!
   }
+  input ConfirmedPaymentProviderFilterInput{
+    provider_id: Int!
+    confirmed_payment_state:String
+    payer_enterprise: Int
+    provider_enterprise: Int
+    id: Int
+    payment_date: String
+    amount: Float
+  }
   input ConfirmedPaymentFilterInput{
     payer_id: Int!
     confirmed_payment_state:String
@@ -155,6 +164,7 @@ const apiSrmType = gql`
     payerCompanyForRepresentative(input: RepresentantiveInput): payersRepresentative
     providerCompanyForRepresentative(input: RepresentantiveInput): providersRepresentativeWithPayers
     confirmedPayment(filters: ConfirmedPaymentFilterInput): [ConfirmedPayment]
+    providerConfirmedPayment(filters: ConfirmedPaymentProviderFilterInput): [ConfirmedPayment]
     confirmedPaymentDetail(input: IdInput): ConfirmedPayment
     getPayerListFromProvider(input: payerProviderInput): [Enterprise]
     getProviderListFromPayer(input: payerProviderInput): [Enterprise]
