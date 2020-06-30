@@ -1,53 +1,61 @@
-import jwt from 'jsonwebtoken';
+import jwt from "jsonwebtoken";
 import "regenerator-runtime/runtime";
-import fetch from 'node-fetch';
+import fetch from "node-fetch";
 
-//Refresh Token, Post Request
-const requestRefreshToken =  async (token) => {
+// Refresh Token, Post Request
+const requestRefreshToken = async token => {
   const baseURL = process.env.API_SRM;
-  const payload = { "refresh": token };
+  const payload = { refresh: token };
   return fetch(`${baseURL}/refresh/`, {
-        method: 'post',
-        body:    JSON.stringify(payload),
-        headers: { 'Content-Type': 'application/json' },
-    })
-    .then(res => res.json());
+    method: "post",
+    body: JSON.stringify(payload),
+    headers: { "Content-Type": "application/json" }
+  }).then(res => res.json());
 };
 
-//Set Header response helper
+// Set Header response helper
 export const setHeadersResponseMiddleware = (argument, response) => {
   const { context } = argument;
   const { refresh, exp_status } = context.extra;
-  if(exp_status){
-    argument.response.http.headers.set('Access-Control-Expose-Headers', 'x-token, x-refresh-token');
-    argument.response.http.headers.set('x-token', refresh.access);
-    argument.response.http.headers.set('x-refresh-token', refresh.refresh);
+  if (exp_status) {
+    argument.response.http.headers.set(
+      "Access-Control-Expose-Headers",
+      "x-token, x-refresh-token"
+    );
+    argument.response.http.headers.set("x-token", refresh.access);
+    argument.response.http.headers.set("x-refresh-token", refresh.refresh);
   }
   return response;
 };
 
-//Refresh middleware
-export const RefreshTokenMiddleware = async (request) => {
+// Refresh middleware
+export const RefreshTokenMiddleware = async request => {
   try {
     // Destructuring
-    const authorization = request.headers['Authorization'];
-    const token = authorization.split(',')[0].replace('token','').trim();
-    const refreshToken = authorization.split(',')[1].replace('refreshToken','').trim();
+    const authorization = request.headers.Authorization;
+    const token = authorization
+      .split(",")[0]
+      .replace("token", "")
+      .trim();
+    const refreshToken = authorization
+      .split(",")[1]
+      .replace("refreshToken", "")
+      .trim();
     const currentTime = new Date().getTime() / 1000;
-    //Decode
+    // Decode
     const tokenDecode = jwt.decode(token);
-    //Chek exp
+    // Chek exp
     if (currentTime > tokenDecode.exp) {
       console.log("Token expired");
       /* refresh */
       const refresh = await requestRefreshToken(refreshToken);
       // Return refresh, then add to contex
-      return { exp_status: true, refresh  };
-    } else {
-      console.log("Not expired ->  now: "+currentTime+" exp: "+tokenDecode.exp);
-      return { exp_status: false, refresh: { access: token } };
+      return { exp_status: true, refresh };
     }
-  } catch (e) {  /* if request doesn't have token headers */
+    console.log(`Not expired ->  now: ${currentTime} exp: ${tokenDecode.exp}`);
+    return { exp_status: false, refresh: { access: token } };
+  } catch (e) {
+    /* if request doesn't have token headers */
     return { exp_status: false };
   }
 };

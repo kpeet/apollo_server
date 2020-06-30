@@ -1,41 +1,44 @@
 // server.js
 
-import { ApolloServer } from 'apollo-server-lambda';
-import  {
+import { ApolloServer } from "apollo-server-lambda";
+import {
   RefreshTokenMiddleware,
   setHeadersResponseMiddleware
-} from './src/middlewares/AuthTokenHandlerMiddleware';
+} from "./src/middlewares/AuthTokenHandlerMiddleware";
 
 /* Here get yours class and functions from controllers */
-import  {
+import {
   SrmAUTH,
   AuthResolver,
-  AuthSchema,
-} from './src/controllers/AuthController';
-import  {
+  AuthSchema
+} from "./src/controllers/AuthController";
+import {
   SrmAPI,
   TestResolver,
-  TestSchema,
-} from './src/controllers/ApiSrmController';
+  TestSchema
+} from "./src/controllers/ApiSrmController";
 
 /* Instance Apollo Server */
 const server = new ApolloServer({
   playground: true,
   introspection: true,
-  typeDefs: [  /* Here subscribe yours schemas */
+  typeDefs: [
+    /* Here subscribe yours schemas */
     AuthSchema,
-    TestSchema,
+    TestSchema
   ],
-  resolvers: [ /* Here subscribe yours resolvers mehtods */
+  resolvers: [
+    /* Here subscribe yours resolvers mehtods */
     AuthResolver,
-    TestResolver,
+    TestResolver
   ],
-  dataSources: () => ({ /* Here subscribe yours dataSources */
-   SrmAUTH: new SrmAUTH(),
-   SrmAPI: new SrmAPI(),
+  dataSources: () => ({
+    /* Here subscribe yours dataSources */
+    SrmAUTH: new SrmAUTH(),
+    SrmAPI: new SrmAPI()
   }),
-  context: async({ event, context }) => {
-    //Add middleware to context
+  context: async ({ event, context }) => {
+    // Add middleware to context
     const extra = await RefreshTokenMiddleware(event);
     context = { ...context, extra };
     return {
@@ -44,14 +47,13 @@ const server = new ApolloServer({
       extra
     };
   },
-  formatResponse: (response, context) => { /* middleware after request */
-    return setHeadersResponseMiddleware(context, response);
-  }
+  formatResponse: (response, context /* middleware after request */) =>
+    setHeadersResponseMiddleware(context, response)
 });
 
 exports.graphqlHandler = server.createHandler({
   cors: {
-    origin: '*',
-    'preflightContinue': false
-  },
+    origin: "*",
+    preflightContinue: false
+  }
 });
