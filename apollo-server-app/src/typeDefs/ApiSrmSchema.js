@@ -21,7 +21,7 @@ const apiSrmType = gql`
     enterprises: String
   }
   type Enterprise {
-    id: String,
+    id: String
     created: String
     updated: String
     name: String
@@ -33,7 +33,7 @@ const apiSrmType = gql`
     postal_code: String
   }
   type EnterpriseWithPayers {
-    id: String,
+    id: String
     created: String
     updated: String
     name: String
@@ -42,7 +42,7 @@ const apiSrmType = gql`
     country: String
     city: String
     address: String
-    postal_code: String,
+    postal_code: String
     payers: [Enterprise]
   }
   type enterprisePayerAssociation {
@@ -65,11 +65,11 @@ const apiSrmType = gql`
     favorite: Enterprise
     providers: [Enterprise]
   }
-  type providersRepresentativeWithPayers{
+  type providersRepresentativeWithPayers {
     favorite: Enterprise
     providers: [EnterpriseWithPayers]
   }
-  type Invoice{
+  type Invoice {
     id: ID
     amount: Float
     issuance_date: String
@@ -97,27 +97,24 @@ const apiSrmType = gql`
     city: String!
     address: String!
     postal_code: String!
-    document_number:String!
+    document_number: String!
   }
-  input CreateRepresentativeInput{
+  input CreateRepresentativeInput {
     id: Int!
     can_edit: Boolean!
   }
   input AssignPayerRepresentativeInput {
     payer_id: Int!
     representatives: [CreateRepresentativeInput]
-
   }
   input AssignProviderRepresentativeInput {
     provider_id: Int!
     representatives: [CreateRepresentativeInput]
-
   }
   input InvoiceInput {
     amount: Float!
     issuance_date: String!
     document_number: Int!
-
   }
   input ConfirmedPaymentInput {
     payer_id: Int!
@@ -130,7 +127,7 @@ const apiSrmType = gql`
   input IdInput {
     id: Int!
   }
-  input ConfirmedPaymentProviderFilterInput{
+  input ConfirmedPaymentProviderFilterInput {
     provider_id: Int!
     confirmed_payment_state:String
     payer_enterprise: Int
@@ -141,17 +138,16 @@ const apiSrmType = gql`
   }
   input ConfirmedPaymentFilterInput{
     payer_id: Int!
-    confirmed_payment_state:String
-
+    confirmed_payment_state: String
   }
-  input confirmedPaymentCloseInput{
+  input confirmedPaymentCloseInput {
     confirmed_payment_id: Int!
   }
-  input setRepresentativeFavoritePayerInput{
+  input setRepresentativeFavoritePayerInput {
     payer_id: Int!
     user_id: Int!
   }
-  input setRepresentativeFavoriteProviderInput{
+  input setRepresentativeFavoriteProviderInput {
     provider_id: Int!
     user_id: Int!
   }
@@ -168,10 +164,14 @@ const apiSrmType = gql`
     
   }
   type Query {
-    Services : Available
+    Services: Available
     representatives: [Representative]
-    payerCompanyForRepresentative(input: RepresentantiveInput): payersRepresentative
-    providerCompanyForRepresentative(input: RepresentantiveInput): providersRepresentativeWithPayers
+    payerCompanyForRepresentative(
+      input: RepresentantiveInput
+    ): payersRepresentative
+    providerCompanyForRepresentative(
+      input: RepresentantiveInput
+    ): providersRepresentativeWithPayers
     confirmedPayment(filters: ConfirmedPaymentFilterInput): [ConfirmedPayment]
     providerConfirmedPayment(filters: ConfirmedPaymentProviderFilterInput): [ConfirmedPayment]
     confirmedPaymentDetail(input: IdInput): ConfirmedPayment
@@ -181,15 +181,23 @@ const apiSrmType = gql`
   }
   extend type Mutation {
     enterprises(input: EnterpriseInput): Enterprise
-    newEnterpriseProvider(enterprise_id: Int! ): enterpriseAssociation
-    newEnterprisePayer(enterprise_id: Int! ): enterprisePayerAssociation
-    asssignRepresentativeToPayerEnterprise(input: AssignPayerRepresentativeInput): [Representative]
-    asssignRepresentativeToProviderEnterprise(input: AssignProviderRepresentativeInput): [Representative]
+    newEnterpriseProvider(enterprise_id: Int!): enterpriseAssociation
+    newEnterprisePayer(enterprise_id: Int!): enterprisePayerAssociation
+    asssignRepresentativeToPayerEnterprise(
+      input: AssignPayerRepresentativeInput
+    ): [Representative]
+    asssignRepresentativeToProviderEnterprise(
+      input: AssignProviderRepresentativeInput
+    ): [Representative]
     confirmedPayment(input: ConfirmedPaymentInput): [ConfirmedPayment]
     confirmedPaymentClose(input: confirmedPaymentCloseInput): ConfirmedPayment
-    setRepresentativeFavoritePayer(input: setRepresentativeFavoritePayerInput): Representative
-    setRepresentativeFavoriteProvider(input: setRepresentativeFavoriteProviderInput): Representative
+    setRepresentativeFavoritePayer(
+      input: setRepresentativeFavoritePayerInput
+    ): Representative
+    setRepresentativeFavoriteProvider(
+      input: setRepresentativeFavoriteProviderInput
+    ): Representative
   }
-  `;
+`;
 
 export default apiSrmType;

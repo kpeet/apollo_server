@@ -1,18 +1,18 @@
 import { gql } from "apollo-server-lambda";
-//Schema
+// Schema
 const typeDefs = gql`
-  type UserResponse{
+  type UserResponse {
     id: ID
     first_name: String
     last_name: String
     email: String
     created: String
   }
-  type Token{
+  type Token {
     refresh: String
     access: String
   }
-  input UserReg{
+  input UserReg {
     first_name: String!
     last_name: String!
     email: String!
@@ -28,13 +28,13 @@ const typeDefs = gql`
     email: String!
     password: String!
   }
-  type Confirmation{
+  type Confirmation {
     status: String
   }
-  input ForgotPasswordInput{
+  input ForgotPasswordInput {
     email: String!
   }
-  input ConfirmForgotPasswordInput{
+  input ConfirmForgotPasswordInput {
     password: String!
     token: String!
   }
