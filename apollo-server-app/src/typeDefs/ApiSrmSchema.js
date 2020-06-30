@@ -75,6 +75,9 @@ const apiSrmType = gql`
     issuance_date: String
     document_number: Int
   }
+  type AdvanceSimulation {
+    advance_amount: Float
+  }
   type ConfirmedPayment {
     id: ID
     amount: Float
@@ -124,6 +127,15 @@ const apiSrmType = gql`
   input IdInput {
     id: Int!
   }
+  input ConfirmedPaymentProviderFilterInput {
+    provider_id: Int!
+    confirmed_payment_state: String
+    payer_enterprise: Int
+    provider_enterprise: Int
+    id: Int
+    payment_date: String
+    amount: Float
+  }
   input ConfirmedPaymentFilterInput {
     payer_id: Int!
     confirmed_payment_state: String
@@ -145,6 +157,11 @@ const apiSrmType = gql`
   input payerProviderInput {
     id: Int!
   }
+  input AdvanceSimulationInput {
+    confirmed_amount: Int!
+    monthly_discount: Float!
+    advance_days: Int!
+  }
   type Query {
     Services: Available
     representatives: [Representative]
@@ -155,9 +172,13 @@ const apiSrmType = gql`
       input: RepresentantiveInput
     ): providersRepresentativeWithPayers
     confirmedPayment(filters: ConfirmedPaymentFilterInput): [ConfirmedPayment]
+    providerConfirmedPayment(
+      filters: ConfirmedPaymentProviderFilterInput
+    ): [ConfirmedPayment]
     confirmedPaymentDetail(input: IdInput): ConfirmedPayment
     getPayerListFromProvider(input: payerProviderInput): [Enterprise]
     getProviderListFromPayer(input: payerProviderInput): [Enterprise]
+    advanceSimulation(input: AdvanceSimulationInput): AdvanceSimulation
   }
   extend type Mutation {
     enterprises(input: EnterpriseInput): Enterprise

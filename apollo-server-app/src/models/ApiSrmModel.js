@@ -124,7 +124,7 @@ class SrmAPI extends RESTDataSource {
   async postProvider(input) {
     const payload = { enterprise: input };
     const providers = await this.post(
-      "providers/", // api django path
+      `providers/`, // api django path
       payload // request body
     );
     return providers;
@@ -172,6 +172,40 @@ class SrmAPI extends RESTDataSource {
   async getProvidersCompanyForRepresentative(input) {
     const services = await this.get(`representatives/${input}/providers/`);
     return services;
+  }
+
+  // Obtener lista de pagos confirmados por proveedor
+  async getConfirmedPaymentByProvider(
+    payer_id,
+    confirmed_payment_state_filter,
+    payer_enterprise_filter,
+    provider_enterprise_filter,
+    id_filter,
+    payment_day_filter,
+    amount_filter
+  ) {
+    // TODO: modificar el page_size=1000 por sistema de paginado
+    const confirmed_payment = await this.get(
+      `providers/${payer_id}/confirmed_payment/?state=${confirmed_payment_state_filter}&payer_enterprise=${payer_enterprise_filter}&provider_enterprise=${provider_enterprise_filter}&id=${id_filter}&payment_day=${payment_day_filter}&amount=${amount_filter}&page_size=1000`
+    );
+
+    console.log(JSON.stringify(confirmed_payment));
+
+    return confirmed_payment;
+  }
+
+  // Obtener lista de pagos confirmados por proveedor
+  // eslint-disable-next-line
+  advanceSimulation(confirmed_amount, monthly_discount, advance_days) {
+    const advance_amount = Math.ceil(
+      confirmed_amount / (1 + (monthly_discount / 30) * advance_days)
+    );
+
+    const payload = {
+      advance_amount
+    };
+
+    return payload;
   }
 }
 
