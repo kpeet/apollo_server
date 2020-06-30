@@ -90,127 +90,123 @@ class SrmAPI extends RESTDataSource {
     return confirmed_payment;
   }
 
-    //Asignar empresa pagadora a representante
-    async setRepresentativeFavoritePayer(payer_id, user_representative_id) {
-
-        const payload =  {"payer": payer_id};
-        const confirmed_payment = await this.put(
-            `representatives/${user_representative_id}/set_favorite_payer/`,
-            payload,
-        );
+  // Asignar empresa pagadora a representante
+  async setRepresentativeFavoritePayer(payer_id, user_representative_id) {
+    const payload = { payer: payer_id };
+    const confirmed_payment = await this.put(
+      `representatives/${user_representative_id}/set_favorite_payer/`,
+      payload
+    );
 
     return confirmed_payment;
   }
 
-   //Confirmed  Payment Close (cierre de pago confirmado)
-   async confirmedPaymentClose(confirmed_payment_id){
-     const payload = {};
-     const response = await this.post(
-       `confirmed_payments/${confirmed_payment_id}/close/`,
-        payload,
-      );
-     return response;
-   };
-    //Get confirmed Payment by id
-    async getConfirmedPayment(confirmed_payment_id){
-        const response = await this.get(
-            `confirmed_payments/${confirmed_payment_id}/`
-        );
-        return response;
+  // Confirmed  Payment Close (cierre de pago confirmado)
+  async confirmedPaymentClose(confirmed_payment_id) {
+    const payload = {};
+    const response = await this.post(
+      `confirmed_payments/${confirmed_payment_id}/close/`,
+      payload
+    );
+    return response;
+  }
+
+  // Get confirmed Payment by id
+  async getConfirmedPayment(confirmed_payment_id) {
+    const response = await this.get(
+      `confirmed_payments/${confirmed_payment_id}/`
+    );
+    return response;
+  }
+
+  // PROVEEDORES
+  // Crear Empresa proveedora en función a empresa creada
+  async postProvider(input) {
+    const payload = { enterprise: input };
+    const providers = await this.post(
+      `providers/`, // api django path
+      payload // request body
+    );
+    return providers;
+  }
+
+  // Asignar lista de representantes a empresas proveedora
+  async postAsssignRepresentativeToProviderEnterprise(
+    provider_id,
+    representantive_list
+  ) {
+    const payload = { representatives: representantive_list };
+    const payer = await this.post(
+      `providers/${provider_id}/representatives/`, // api django path
+      payload // request body
+    );
+    return payer;
+  }
+
+  // Asignar empresa proveedora a representante
+  async setRepresentativeFavoriteProvider(provider_id, user_representative_id) {
+    const payload = { provider: provider_id };
+    const confirmed_payment = await this.put(
+      `representatives/${user_representative_id}/set_favorite_provider/`,
+      payload
+    );
+
+    return confirmed_payment;
+  }
+
+  // Traer proveedores asociados a un pagador
+  async getProviderListFromPayer(payer_id) {
+    const provider_list = await this.get(`payers/${payer_id}/providers/`);
+
+    return provider_list;
+  }
+
+  // Traer pagadores asociados a un proveedor
+  async getPayerListFromProvider(provider_id) {
+    const payer_list = await this.get(`providers/${provider_id}/payers/`);
+
+    return payer_list;
+  }
+
+  // Obtener lista de empresas pagadoras en función al representante
+  async getProvidersCompanyForRepresentative(input) {
+    const services = await this.get(`representatives/${input}/providers/`);
+    return services;
+  }
+
+  // Obtener lista de pagos confirmados por proveedor
+  async getConfirmedPaymentByProvider(
+    payer_id,
+    confirmed_payment_state_filter,
+    payer_enterprise_filter,
+    provider_enterprise_filter,
+    id_filter,
+    payment_day_filter,
+    amount_filter
+  ) {
+    // TODO: modificar el page_size=1000 por sistema de paginado
+    const confirmed_payment = await this.get(
+      `providers/${payer_id}/confirmed_payment/?state=${confirmed_payment_state_filter}&payer_enterprise=${payer_enterprise_filter}&provider_enterprise=${provider_enterprise_filter}&id=${id_filter}&payment_day=${payment_day_filter}&amount=${amount_filter}&page_size=1000`
+    );
+
+    console.log(JSON.stringify(confirmed_payment));
+
+    return confirmed_payment;
+  }
+
+  // Obtener lista de pagos confirmados por proveedor
+  // eslint-disable-next-line
+  advanceSimulation(confirmed_amount, monthly_discount, advance_days) {
+    const advance_amount = Math.ceil(
+      confirmed_amount / (1 + (monthly_discount / 30) * advance_days)
+    );
+
+    const payload = {
+      advance_amount
     };
 
-
-    //PROVEEDORES
-    //Crear Empresa proveedora en función a empresa creada
-    async postProvider(input) {
-
-        const payload = {"enterprise": input};
-        const providers = await this.post(
-            `providers/`, // api django path
-            payload, // request body
-        );
-        return providers;
-    };
-    //Asignar lista de representantes a empresas proveedora
-    async postAsssignRepresentativeToProviderEnterprise(provider_id, representantive_list) {
-
-        const payload = {"representatives": representantive_list};
-        const payer = await this.post(
-            `providers/${provider_id}/representatives/`, // api django path
-            payload, // request body
-        );
-        return payer;
-    };
-    //Asignar empresa proveedora a representante
-    async setRepresentativeFavoriteProvider(provider_id, user_representative_id) {
-
-        const payload =  {"provider": provider_id};
-        const confirmed_payment = await this.put(
-            `representatives/${user_representative_id}/set_favorite_provider/`,
-            payload,
-        );
-
-        return confirmed_payment;
-    };
-    //Traer proveedores asociados a un pagador
-    async getProviderListFromPayer(payer_id) {
-
-        const provider_list = await this.get(
-            `payers/${payer_id}/providers/`,
-        );
-
-        return provider_list;
-    };
-    //Traer pagadores asociados a un proveedor
-    async getPayerListFromProvider(provider_id) {
-
-        const payer_list = await this.get(
-            `providers/${provider_id}/payers/`
-        );
-
-        return payer_list;
-    };
-
-    //Obtener lista de empresas pagadoras en función al representante
-    async getProvidersCompanyForRepresentative(input) {
-        const services = await this.get(`representatives/${input}/providers/`);
-        return services;
-    };
-
-    //Obtener lista de pagos confirmados por proveedor
-    async getConfirmedPaymentByProvider(payer_id, confirmed_payment_state_filter,
-                                        payer_enterprise_filter, provider_enterprise_filter,
-                                        id_filter, payment_day_filter, amount_filter) {
-
-        //TODO: modificar el page_size=1000 por sistema de paginado
-        const confirmed_payment = await this.get(
-            `providers/${payer_id}/confirmed_payment/?state=${confirmed_payment_state_filter}&payer_enterprise=${payer_enterprise_filter}&provider_enterprise=${provider_enterprise_filter}&id=${id_filter}&payment_day=${payment_day_filter}&amount=${amount_filter}&page_size=1000`
-        );
-
-
-        console.log(JSON.stringify(confirmed_payment));
-
-        return confirmed_payment;
-    };
-
-    //Obtener lista de pagos confirmados por proveedor
-    advanceSimulation( confirmed_amount,
-                       monthly_discount, advance_days) {
-
-        const advance_amount = Math.ceil(confirmed_amount / (1 + (monthly_discount / 30) * advance_days))
-
-
-        console.log(JSON.stringify(advance_amount));
-
-        const payload ={
-            advance_amount
-        }
-
-        return payload;
-    };
-
-
-
+    return payload;
+  }
 }
 
 export default SrmAPI;

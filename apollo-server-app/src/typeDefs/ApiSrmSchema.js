@@ -1,4 +1,4 @@
-import {gql} from "apollo-server-lambda";
+import { gql } from "apollo-server-lambda";
 
 const apiSrmType = gql`
   type Available {
@@ -75,10 +75,10 @@ const apiSrmType = gql`
     issuance_date: String
     document_number: Int
   }
-  type AdvanceSimulation{
+  type AdvanceSimulation {
     advance_amount: Float
   }
-  type ConfirmedPayment{
+  type ConfirmedPayment {
     id: ID
     amount: Float
     payment_date: String
@@ -129,14 +129,14 @@ const apiSrmType = gql`
   }
   input ConfirmedPaymentProviderFilterInput {
     provider_id: Int!
-    confirmed_payment_state:String
+    confirmed_payment_state: String
     payer_enterprise: Int
     provider_enterprise: Int
     id: Int
     payment_date: String
     amount: Float
   }
-  input ConfirmedPaymentFilterInput{
+  input ConfirmedPaymentFilterInput {
     payer_id: Int!
     confirmed_payment_state: String
   }
@@ -161,7 +161,6 @@ const apiSrmType = gql`
     confirmed_amount: Int!
     monthly_discount: Float!
     advance_days: Int!
-    
   }
   type Query {
     Services: Available
@@ -173,11 +172,13 @@ const apiSrmType = gql`
       input: RepresentantiveInput
     ): providersRepresentativeWithPayers
     confirmedPayment(filters: ConfirmedPaymentFilterInput): [ConfirmedPayment]
-    providerConfirmedPayment(filters: ConfirmedPaymentProviderFilterInput): [ConfirmedPayment]
+    providerConfirmedPayment(
+      filters: ConfirmedPaymentProviderFilterInput
+    ): [ConfirmedPayment]
     confirmedPaymentDetail(input: IdInput): ConfirmedPayment
     getPayerListFromProvider(input: payerProviderInput): [Enterprise]
     getProviderListFromPayer(input: payerProviderInput): [Enterprise]
-    advanceSimulation(input: AdvanceSimulationInput):AdvanceSimulation
+    advanceSimulation(input: AdvanceSimulationInput): AdvanceSimulation
   }
   extend type Mutation {
     enterprises(input: EnterpriseInput): Enterprise
