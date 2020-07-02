@@ -163,6 +163,7 @@ const apiSrmType = gql`
     advance_days: Int!
   }
   input advanceAttemptInput {
+    confirmed_payment_id: Int!
     confirmed_amount: Int!
     monthly_discount: Float!
     advance_amount: Float!
@@ -204,9 +205,7 @@ const apiSrmType = gql`
     setRepresentativeFavoriteProvider(
       input: setRepresentativeFavoriteProviderInput
     ): Representative
-    confirmedPaymentAdvanceAttempt(
-      input: advanceAttemptInput
-    ): ConfirmedPayment
+    confirmedPaymentAdvanceAttempt(input: advanceAttemptInput): ConfirmedPayment
   }
 `;
 
