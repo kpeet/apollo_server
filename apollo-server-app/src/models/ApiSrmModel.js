@@ -207,6 +207,24 @@ class SrmAPI extends RESTDataSource {
 
     return payload;
   }
+
+  // Crear Attempt de pago confirmado por Anticipo
+  async createConfirmedPaymentAdvanceAttempt(confirmed_payment_id, input) {
+    const payload = {
+      simulation: {
+        confirmed_amount: input.confirmed_amount,
+        monthly_discount: input.monthly_discount,
+        advance_amount: input.advance_amount,
+        advance_days: input.advance_days
+      }
+    };
+    const attemp_simulation = await this.put(
+      `confirmed_payments/${confirmed_payment_id}/create_attempt/`,
+      payload
+    );
+
+    return attemp_simulation;
+  }
 }
 
 export default SrmAPI;
