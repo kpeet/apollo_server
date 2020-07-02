@@ -231,7 +231,6 @@ const resolvers = {
           input.confirmed_payment_id,
           input
         );
-        // TODO: Falta implementar paginado
         return result.results;
       } catch (error) {
         console.log(error);
