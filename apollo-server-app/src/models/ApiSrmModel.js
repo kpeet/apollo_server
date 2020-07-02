@@ -208,7 +208,7 @@ class SrmAPI extends RESTDataSource {
     return payload;
   }
 
-  // Asignar empresa proveedora a representante
+  // Crear Attempt de pago confirmado por Anticipo
   async createConfirmedPaymentAdvanceAttempt(confirmed_payment_id, input) {
     const payload = {
       simulation: {
