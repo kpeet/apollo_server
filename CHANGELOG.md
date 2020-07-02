@@ -14,7 +14,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Add query providerCompanyForRepresentative[(33)]
 - Add eslint plugin and airbnb base rules [(35)]
 - Add prettier plugin for beautiful code [(35)]
-- Add Confirmed payment attempt, used for advance[()]
+- Add Confirmed payment attempt, used for advance[(37)]
 
 ### Changed
 - Change input of asssignRepresentativeToPayerEnterprise service [(29)]
@@ -109,4 +109,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [(29)]: https://bitbucket.org/cumplo/srm-apollo-server/pull-requests/29/
 [(30)]: https://bitbucket.org/cumplo/srm-apollo-server/pull-requests/30/
 [(33)]: https://bitbucket.org/cumplo/srm-apollo-server/pull-requests/33/
-[()]: https://bitbucket.org/cumplo/srm-apollo-server/pull-requests//
+[(37)]: https://bitbucket.org/cumplo/srm-apollo-server/pull-requests/37/
