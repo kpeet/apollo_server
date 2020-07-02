@@ -179,19 +179,6 @@ const resolvers = {
         throw error;
       }
     },
-    confirmedPayment: async (_source, { input }, { dataSources }) => {
-      try {
-        const result = await dataSources.SrmAPI.confirmedPayment(
-          input.payer_id,
-          input
-        );
-        // TODO: Falta implementar paginado
-        return result.results;
-      } catch (error) {
-        console.log(error);
-        throw error;
-      }
-    },
     setRepresentativeFavoritePayer: async (
       _source,
       { input },
@@ -208,6 +195,7 @@ const resolvers = {
         throw error;
       }
     },
+      //PAGOS CONFIRMADOS
     confirmedPaymentClose: async (_source, { input }, { dataSources }) => {
       try {
         const result = await dataSources.SrmAPI.confirmedPaymentClose(
@@ -219,6 +207,33 @@ const resolvers = {
         throw error;
       }
     },
+      confirmedPayment: async (_source, { input }, { dataSources }) => {
+          try {
+              const result = await dataSources.SrmAPI.confirmedPayment(
+                  input.payer_id,
+                  input
+              );
+              // TODO: Falta implementar paginado
+              return result.results;
+          } catch (error) {
+              console.log(error);
+              throw error;
+          }
+      },
+      //ATTEMPS DE PAGOS CONFIRMADOS
+      confirmedPaymentAdvanceAttempt: async (_source, { input }, { dataSources }) => {
+          try {
+              const result = await dataSources.SrmAPI.createConfirmedPaymentAdvanceAttempt(
+                  input.payer_id,
+                  input
+              );
+              // TODO: Falta implementar paginado
+              return result.results;
+          } catch (error) {
+              console.log(error);
+              throw error;
+          }
+      },
 
     // PROVEEDORES
     newEnterpriseProvider: async (

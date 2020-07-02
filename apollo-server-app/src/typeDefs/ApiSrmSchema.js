@@ -162,6 +162,12 @@ const apiSrmType = gql`
     monthly_discount: Float!
     advance_days: Int!
   }
+  input advanceAttemptInput {
+    confirmed_amount: Int!
+    monthly_discount: Float!
+    advance_amount: Float!
+    advance_days: Int!
+  }
   type Query {
     Services: Available
     representatives: [Representative]
@@ -198,6 +204,9 @@ const apiSrmType = gql`
     setRepresentativeFavoriteProvider(
       input: setRepresentativeFavoriteProviderInput
     ): Representative
+    confirmedPaymentAdvanceAttempt(
+      input: advanceAttemptInput
+    ): ConfirmedPayment
   }
 `;
 
