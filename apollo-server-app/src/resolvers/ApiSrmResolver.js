@@ -112,7 +112,7 @@ const resolvers = {
           : "";
         const amount_filter = filters.amount ? filters.amount : "";
 
-        const result = await dataSources.SrmAPI.getConfirmedPaymentByProvider(
+        const confirmed_payment_list = await dataSources.SrmAPI.getConfirmedPaymentByProvider(
           filters.provider_id,
           confirmed_payment_state_filter,
           payer_enterprise_filter,
@@ -121,9 +121,28 @@ const resolvers = {
           payment_date_filter,
           amount_filter
         );
+        let  bank_account = [];
+        try{
+          bank_account = await dataSources.SrmAPI.getProviderBankAccount(
+                filters.provider_id,
+                confirmed_payment_state_filter,
+                payer_enterprise_filter,
+                provider_enterprise_filter,
+                id_filter,
+                payment_date_filter,
+                amount_filter
+            );
+
+        }catch (error) {
+            console.log(error);
+        }
+        const response = {
+            confirmed_payment_list:confirmed_payment_list.results,
+            provider_bank_account_list:bank_account
+        }
 
         // TODO: Falta implementar paginado
-        return result.results;
+        return response;
       } catch (error) {
         console.log(error);
         throw error;
@@ -228,7 +247,6 @@ const resolvers = {
     ) => {
       try {
         const result = await dataSources.SrmAPI.createConfirmedPaymentAdvanceAttempt(
-          input.confirmed_payment_id,
           input
         );
         return result;
