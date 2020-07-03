@@ -16,6 +16,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Add prettier plugin for beautiful code [(35)]
 - Add Confirmed payment attempt, used for advance[(37)]
 - fix Confirmed payment attempt response[(38)]
+- add Bank in attempt[()]
 
 ### Changed
 - Change input of asssignRepresentativeToPayerEnterprise service [(29)]
@@ -112,3 +113,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [(33)]: https://bitbucket.org/cumplo/srm-apollo-server/pull-requests/33/
 [(37)]: https://bitbucket.org/cumplo/srm-apollo-server/pull-requests/37/
 [(38)]: https://bitbucket.org/cumplo/srm-apollo-server/pull-requests/38/
+[()]: https://bitbucket.org/cumplo/srm-apollo-server/pull-requests//
