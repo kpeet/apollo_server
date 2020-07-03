@@ -17,6 +17,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Add Confirmed payment attempt, used for advance[(37)]
 - fix Confirmed payment attempt response[(38)]
 - add Bank in attempt[()]
+fix Confirmed payment attempt with multi Confirmed payment [()]
 
 ### Changed
 - Change input of asssignRepresentativeToPayerEnterprise service [(29)]
