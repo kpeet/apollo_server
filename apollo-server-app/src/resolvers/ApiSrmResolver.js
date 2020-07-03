@@ -124,13 +124,7 @@ const resolvers = {
         let  bank_account = [];
         try{
           bank_account = await dataSources.SrmAPI.getProviderBankAccount(
-                filters.provider_id,
-                confirmed_payment_state_filter,
-                payer_enterprise_filter,
-                provider_enterprise_filter,
-                id_filter,
-                payment_date_filter,
-                amount_filter
+                filters.provider_id
             );
 
         }catch (error) {

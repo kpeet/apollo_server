@@ -198,7 +198,6 @@ const apiSrmType = gql`
   input AdvanceAttemptInput {
     simulation:Simulation!
     confirmed_payments: [Int]!
-    confirmed_amount: Int!
     bank_account: Int!
   }
   type Query {
@@ -213,7 +212,7 @@ const apiSrmType = gql`
     confirmedPayment(filters: ConfirmedPaymentFilterInput): [ConfirmedPayment]
     providerConfirmedPayment(
       filters: ConfirmedPaymentProviderFilterInput
-    ): [ConfirmedPaymentAndProviderBankAccounts]
+    ): ConfirmedPaymentAndProviderBankAccounts
     confirmedPaymentDetail(input: IdInput): ConfirmedPayment
     getPayerListFromProvider(input: payerProviderInput): [Enterprise]
     getProviderListFromPayer(input: payerProviderInput): [Enterprise]
