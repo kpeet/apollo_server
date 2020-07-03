@@ -193,6 +193,19 @@ class SrmAPI extends RESTDataSource {
 
     return confirmed_payment;
   }
+  // Obtener cuenta bancaria del proveedor
+  async getProviderBankAccount(
+    provider_id
+  ) {
+    // TODO: modificar el page_size=1000 por sistema de paginado
+    const bank_account_list = await this.get(
+      `providers/${provider_id}/bank_account/`
+    );
+
+    console.log(JSON.stringify(bank_account_list));
+
+    return bank_account_list;
+  }
 
   // Obtener lista de pagos confirmados por proveedor
   // eslint-disable-next-line
@@ -209,19 +222,29 @@ class SrmAPI extends RESTDataSource {
   }
 
   // Crear Attempt de pago confirmado por Anticipo
-  async createConfirmedPaymentAdvanceAttempt(confirmed_payment_id, input) {
+  async createConfirmedPaymentAdvanceAttempt(input) {
+
+    console.log("createConfirmedPaymentAdvanceAttempt input");
+    console.log(input);
     const payload = {
       simulation: {
-        confirmed_amount: input.confirmed_amount,
-        monthly_discount: input.monthly_discount,
-        advance_amount: input.advance_amount,
-        advance_days: input.advance_days
-      }
+        confirmed_amount: input.simulation.confirmed_amount,
+        monthly_discount: input.simulation.monthly_discount,
+        advance_amount: input.simulation.advance_amount,
+        advance_days: input.simulation.advance_days
+      },
+        confirmed_payments:input.confirmed_payments,
+        bank_account: input.bank_account
     };
+      console.log("createConfirmedPaymentAdvanceAttempt payload");
+      console.log(payload);
     const attemp_simulation = await this.put(
-      `confirmed_payments/${confirmed_payment_id}/create_attempt/`,
+      `confirmed_payments/advance_attempt/`,
       payload
     );
+
+      console.log("createConfirmedPaymentAdvanceAttempt RESPONSE");
+      console.log(attemp_simulation);
 
     return attemp_simulation;
   }

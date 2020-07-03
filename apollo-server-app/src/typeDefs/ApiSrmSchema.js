@@ -90,6 +90,33 @@ const apiSrmType = gql`
     state: String
     representative_document_number: String
   }
+  type ConfirmedPaymentAndProviderBankAccounts {
+    confirmed_payment_list: [ConfirmedPayment]
+    provider_bank_account_list: [BankAccount]
+  }
+  type BankAccount {
+    id: ID,
+    created: String,
+    updated: String,
+    account_number: String,
+    email: String,
+    active: Boolean,
+    account_holder_name: String,
+    account_holder_document_number: String,
+    provider: Int,
+    bank: Int,
+    account_type: Int
+  }
+  type AdvanceAttempt {
+    id: ID,
+    created: String,
+    updated: String,
+    state: String,
+    message: String,
+    bank_account: Int,
+    user: Int,
+    confirmed_payments: [Int]
+  }
   input EnterpriseInput {
     name: String!
     business_name: String!
@@ -162,12 +189,17 @@ const apiSrmType = gql`
     monthly_discount: Float!
     advance_days: Int!
   }
-  input advanceAttemptInput {
-    confirmed_payment_id: Int!
+  input Simulation {
     confirmed_amount: Int!
     monthly_discount: Float!
     advance_amount: Float!
     advance_days: Int!
+  }
+  input AdvanceAttemptInput {
+    simulation:Simulation!
+    confirmed_payments: [Int]!
+    confirmed_amount: Int!
+    bank_account: Int!
   }
   type Query {
     Services: Available
@@ -181,7 +213,7 @@ const apiSrmType = gql`
     confirmedPayment(filters: ConfirmedPaymentFilterInput): [ConfirmedPayment]
     providerConfirmedPayment(
       filters: ConfirmedPaymentProviderFilterInput
-    ): [ConfirmedPayment]
+    ): [ConfirmedPaymentAndProviderBankAccounts]
     confirmedPaymentDetail(input: IdInput): ConfirmedPayment
     getPayerListFromProvider(input: payerProviderInput): [Enterprise]
     getProviderListFromPayer(input: payerProviderInput): [Enterprise]
@@ -205,7 +237,7 @@ const apiSrmType = gql`
     setRepresentativeFavoriteProvider(
       input: setRepresentativeFavoriteProviderInput
     ): Representative
-    confirmedPaymentAdvanceAttempt(input: advanceAttemptInput): ConfirmedPayment
+    confirmedPaymentAdvanceAttempt(input: AdvanceAttemptInput): AdvanceAttempt
   }
 `;
 
