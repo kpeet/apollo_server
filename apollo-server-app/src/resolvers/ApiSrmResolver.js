@@ -231,7 +231,7 @@ const resolvers = {
           input.confirmed_payment_id,
           input
         );
-        return result.results;
+        return result;
       } catch (error) {
         console.log(error);
         throw error;
