@@ -198,7 +198,6 @@ const apiSrmType = gql`
   input AdvanceAttemptInput {
     simulation:Simulation!
     confirmed_payments: [Int]!
-    confirmed_amount: Int!
     bank_account: Int!
   }
   type Query {
