@@ -95,17 +95,19 @@ const apiSrmType = gql`
     provider_bank_account_list: [BankAccount]
   }
   type BankAccount {
-    id: ID,
-    created: String,
-    updated: String,
-    account_number: String,
-    email: String,
-    active: Boolean,
-    account_holder_name: String,
-    account_holder_document_number: String,
-    provider: Int,
-    bank: Int,
+    id: ID
+    created: String
+    updated: String
+    account_number: String
+    email: String
+    active: Boolean
+    account_holder_name: String
+    account_holder_document_number: String
+    provider: Int
+    bank: Int
     account_type: Int
+    bank_name: String
+    account_type_name: String
   }
   type AdvanceAttempt {
     id: ID,
