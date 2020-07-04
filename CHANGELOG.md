@@ -17,7 +17,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Add Confirmed payment attempt, used for advance[(37)]
 - fix Confirmed payment attempt response[(38)]
 - add Bank in attempt[(39)]
-fix Confirmed payment attempt with multi Confirmed payment [(40)]
+- fix Confirmed payment attempt with multi Confirmed payment [(40)]
+- Add account_type_name and bank_name on BankAccount Type[(41)]
 
 ### Changed
 - Change input of asssignRepresentativeToPayerEnterprise service [(29)]
@@ -56,7 +57,7 @@ fix Confirmed payment attempt with multi Confirmed payment [(40)]
 - Add confirmedPaymentDetail [(23)]
 - Add field state to confirmedPayment's query[(25)]
 - Add representative_document_number on ConfirmedPayment[(26)]
-- Add account_type_name and bank_name on BankAccount Type[(4)]
+
 
 ### Fixed
 - Add environment var to docker-compose [(6)]
@@ -118,4 +119,4 @@ fix Confirmed payment attempt with multi Confirmed payment [(40)]
 [(38)]: https://bitbucket.org/cumplo/srm-apollo-server/pull-requests/38/
 [(39)]: https://bitbucket.org/cumplo/srm-apollo-server/pull-requests/39/
 [(40)]: https://bitbucket.org/cumplo/srm-apollo-server/pull-requests/40/
-[(4)]: https://bitbucket.org/cumplo/srm-apollo-server/pull-requests/4/
+[(41)]: https://bitbucket.org/cumplo/srm-apollo-server/pull-requests/41/
