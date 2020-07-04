@@ -56,6 +56,7 @@ fix Confirmed payment attempt with multi Confirmed payment [(40)]
 - Add confirmedPaymentDetail [(23)]
 - Add field state to confirmedPayment's query[(25)]
 - Add representative_document_number on ConfirmedPayment[(26)]
+- Add account_type_name and bank_name on BankAccount Type[(4)]
 
 ### Fixed
 - Add environment var to docker-compose [(6)]
@@ -66,6 +67,7 @@ fix Confirmed payment attempt with multi Confirmed payment [(40)]
 - Allow special headers field in cors preflight response [(13)]
 - Finish solution cors preflight response [(14)]
 - Fix detail on payer company [(20)]
+
 
 ### DevOps
 - Add node_modules to volumen [()]
@@ -116,3 +118,4 @@ fix Confirmed payment attempt with multi Confirmed payment [(40)]
 [(38)]: https://bitbucket.org/cumplo/srm-apollo-server/pull-requests/38/
 [(39)]: https://bitbucket.org/cumplo/srm-apollo-server/pull-requests/39/
 [(40)]: https://bitbucket.org/cumplo/srm-apollo-server/pull-requests/40/
+[(4)]: https://bitbucket.org/cumplo/srm-apollo-server/pull-requests/4/
