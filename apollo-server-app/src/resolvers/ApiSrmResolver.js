@@ -161,11 +161,139 @@ const resolvers = {
     enterprises: async (_source, { input }, { dataSources }) => {
       try {
         const result = await dataSources.SrmAPI.postEnterprises(input);
-        return result;
+        console.log("Creando empresa result");
+        console.log(result);
       } catch (error) {
+        console.log("Error SRM ");
+
+        console.log(error);
+        // throw error;
+      }
+      console.log("EN KIMCHI");
+
+      try {
+        const create_enterprise_registry_kimchi_payload = {
+          type: "eirl",
+          business_name: input.business_name,
+          fantasy_name: input.business_name,
+          representative: 10,
+          document_number: input.document_number,
+          country: 1,
+          creator: 10
+        };
+        const enterprise_registry_kimchi = await dataSources.RegistryKimchiApi.createKimchiEnterprise(
+          create_enterprise_registry_kimchi_payload
+        );
+        console.log("Creando empresa result en Kimchi ");
+        console.log(enterprise_registry_kimchi);
+        console.log(enterprise_registry_kimchi.id);
+
+        try {
+          const create_enterprise_profile_registry_kimchi_payload = {
+            enterprise: enterprise_registry_kimchi.id,
+            activities: [
+              {
+                activity_id: 1,
+                name: "CULTIVO DE TRIGO"
+              }
+            ],
+            constitution_date: "2020-06-01",
+            phones: [
+              {
+                phone_number: "234234243",
+                phone_type: "mobile"
+              }
+            ],
+            addresses: [
+              {
+                country: 1,
+                level_one_address: 2,
+                level_two_address: 6,
+                street: "calle de la perdición",
+                building: "306",
+                sub_building: "666",
+                zip_code: "306-666"
+              }
+            ],
+            email: "kpeet@inf.utfsm.cl",
+            webpage: "",
+            description: "",
+            legal_representative: []
+          };
+          const enterprise_profile_registry_kimchi = await dataSources.RegistryKimchiApi.createKimchiEnterpriseProfile(
+            create_enterprise_profile_registry_kimchi_payload
+          );
+          console.log("Creando Profile en Kimcho ");
+          console.log(enterprise_profile_registry_kimchi);
+
+          try {
+            const create_enterprise_bank_account_registry_kimchi_payload = {
+              is_payer: true,
+              fantasy_name: input.business_name,
+              has_profile: true,
+              is_requester: true,
+              created: "2020-06-26T22:49:46.178059Z",
+              business_name: input.business_name,
+              is_investor: false,
+              document_number: input.document_number,
+              state: "new",
+              country: 1,
+              approved: true,
+              type: "eirl",
+              updated: "2020-06-26T22:49:46.178105Z",
+              id: enterprise_profile_registry_kimchi.enterprise,
+              representative: 10
+            };
+            const enterprise_bank_ccount_registry_kimchi = await dataSources.RegistryKimchiApi.approveEnterprise(
+              enterprise_profile_registry_kimchi.enterprise,
+              create_enterprise_bank_account_registry_kimchi_payload
+            );
+            console.log("Aprovando empresa!!!!!!!! ");
+            console.log(enterprise_bank_ccount_registry_kimchi);
+
+            // const create_enterprise_bank_account_registry_kimchi_payload ={
+            //     enterprise:{
+            //         id:enterprise_registry_kimchi.id,
+            //         name:input.business_name,
+            //         document_number: input.document_number
+            //     },
+            //     errors:{
+            //
+            //     },
+            //     user:{
+            //         id:"",
+            //         name:"",
+            //         document_number:""
+            //     },
+            //     account_holder_document_number:input.document_number,
+            //     account_type:1,
+            //     account_holder_name:input.business_name,
+            //     default_account:false,
+            //     typeAddressee:"enterprises",
+            //     account_number:"6666666666",
+            //     bank:3,
+            //     email:"kpeet@inf.utfsm.cl"
+            // };
+            // const enterprise_bank_ccount_registry_kimchi = await dataSources.BankingKimchiApi.createKimchiEnterpriseBankAccount(create_enterprise_bank_account_registry_kimchi_payload);
+            // console.log("Creando Bank Account en Kimcho ");
+            // console.log(enterprise_bank_ccount_registry_kimchi);
+            return enterprise_registry_kimchi;
+          } catch (error) {
+            console.log("Error Kimchi ");
+            console.log(error);
+            throw error;
+          }
+        } catch (error) {
+          console.log("Error Kimchi ");
+          console.log(error);
+          throw error;
+        }
+      } catch (error) {
+        console.log("Error Kimchi ");
         console.log(error);
         throw error;
       }
+      return result
     },
     newEnterprisePayer: async (_source, { enterprise_id }, { dataSources }) => {
       try {

@@ -60,4 +60,21 @@ export const RefreshTokenMiddleware = async request => {
   }
 };
 
+// Get Kimchi Token
+export const getKimchiToken = async () => {
+  const baseURL = process.env.API_REGISTRY;
+  const payload = {
+    email: "kpeet@inf.utfsm.cl",
+    password: "papapleto"
+  };
+
+  console.log("auth-jwt KIMCHI");
+
+  return fetch(`${baseURL}/auth-jwt/`, {
+    method: "post",
+    body: JSON.stringify(payload),
+    headers: { "Content-Type": "application/json" }
+  }).then(res => res.json().catch(er => console.log(er)));
+};
+
 export default RefreshTokenMiddleware;
