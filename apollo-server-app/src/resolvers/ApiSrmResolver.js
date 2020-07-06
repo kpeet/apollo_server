@@ -1,9 +1,5 @@
 const resolvers = {
   Query: {
-    Services: async (_source, _args, { dataSources }) => {
-      return dataSources.SrmAPI.getAvailableServices();
-    },
-
     representatives: async (_source, _args, { dataSources }) => {
       const result = await dataSources.SrmAPI.getRepresentatives();
       return result.results;
@@ -151,6 +147,27 @@ const resolvers = {
         );
 
         return result;
+      } catch (error) {
+        console.log(error);
+        throw error;
+      }
+    },
+    bank: async(_source, _, { dataSources }) => {
+      try {
+        const result = await dataSources.SrmAPI.getBank();
+        // TODO: Falta implementar paginado
+          console.log(JSON.stringify(result));
+        return result.results;
+      } catch (error) {
+        console.log(error);
+        throw error;
+      }
+    },
+      bankAccountType: async (_source, _, { dataSources }) => {
+      try {
+        const result = await dataSources.SrmAPI.getBankAccountType();
+        // TODO: Falta implementar paginado
+        return result.results;
       } catch (error) {
         console.log(error);
         throw error;
@@ -417,6 +434,38 @@ const resolvers = {
         const result = await dataSources.SrmAPI.setRepresentativeFavoriteProvider(
           input.provider_id,
           input.user_id
+        );
+        return result;
+      } catch (error) {
+        console.log(error);
+        throw error;
+      }
+    },
+      ///Attempts
+      confirmedPaymentAttemptState: async (
+      _source,
+      { input },
+      { dataSources }
+    ) => {
+      try {
+        const result = await dataSources.SrmAPI.confirmedPaymentAttemptState(
+          input.state,
+          input.attempt_id
+        );
+        return result;
+      } catch (error) {
+        console.log(error);
+        throw error;
+      }
+    },
+      newProviderBankAccount: async (
+      _source,
+      { input },
+      { dataSources }
+    ) => {
+      try {
+        const result = await dataSources.SrmAPI.newProviderBankAccount( input.provider_id,
+            input
         );
         return result;
       } catch (error) {

@@ -19,6 +19,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - add Bank in attempt[(39)]
 - fix Confirmed payment attempt with multi Confirmed payment [(40)]
 - Add account_type_name and bank_name on BankAccount Type[(41)]
+- Add mutation confirmedPaymentAttemptState and newProviderBankAccount [(4)]
+- Add query bank and bankAccountType [(4)]
 
 ### Changed
 - Change input of asssignRepresentativeToPayerEnterprise service [(29)]
@@ -120,3 +122,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [(39)]: https://bitbucket.org/cumplo/srm-apollo-server/pull-requests/39/
 [(40)]: https://bitbucket.org/cumplo/srm-apollo-server/pull-requests/40/
 [(41)]: https://bitbucket.org/cumplo/srm-apollo-server/pull-requests/41/
+[(4)]: https://bitbucket.org/cumplo/srm-apollo-server/pull-requests/4/

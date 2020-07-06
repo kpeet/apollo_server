@@ -19,12 +19,6 @@ class SrmAPI extends RESTDataSource {
     }
   }
 
-  // Get Available Services Api
-  async getAvailableServices() {
-    const services = await this.get("/");
-    return services;
-  }
-
   // Obtener lista de Representantes
   async getRepresentatives() {
     const services = await this.get("representatives");
@@ -197,7 +191,6 @@ class SrmAPI extends RESTDataSource {
   async getProviderBankAccount(
     provider_id
   ) {
-    // TODO: modificar el page_size=1000 por sistema de paginado
     const bank_account_list = await this.get(
       `providers/${provider_id}/bank_account/`
     );
@@ -206,8 +199,44 @@ class SrmAPI extends RESTDataSource {
 
     return bank_account_list;
   }
+    async newProviderBankAccount(
+        provider_id,
+        input
+    ) {
 
-  // Obtener lista de pagos confirmados por proveedor
+      const payload = input;
+        const bank_account = await this.put(
+            `providers/${provider_id}/bank_account/`,
+            payload
+
+        );
+        console.log(JSON.stringify(bank_account));
+
+        return bank_account;
+    }
+
+    async getBank(
+    ) {
+        // TODO: modificar el page_size=1000 por sistema de paginado
+        const bank_list = await this.get(
+            `banks/?page_size=1000`
+        );
+
+
+        return bank_list;
+    }
+    async getBankAccountType(
+    ) {
+        // TODO: modificar el page_size=1000 por sistema de paginado
+        const bank_account_type_list = await this.get(
+            `bank_account_types/?page_size=1000`
+        );
+        console.log(JSON.stringify(bank_account_type_list));
+
+        return bank_account_type_list;
+    }
+
+    // Obtener lista de pagos confirmados por proveedor
   // eslint-disable-next-line
   advanceSimulation(confirmed_amount, monthly_discount, advance_days) {
     const advance_amount = Math.ceil(
@@ -248,6 +277,16 @@ class SrmAPI extends RESTDataSource {
 
     return attemp_simulation;
   }
+    async confirmedPaymentAttemptState(
+        state, confirmed_payment_attempt_id
+    ) {
+        const confirmed_payment_attempts_result = await this.post(
+            `confirmed_payment_attempts/${confirmed_payment_attempt_id}/${state}/`
+        );
+        console.log(JSON.stringify(confirmed_payment_attempts_result));
+
+        return confirmed_payment_attempts_result;
+    }
 }
 
 export default SrmAPI;
