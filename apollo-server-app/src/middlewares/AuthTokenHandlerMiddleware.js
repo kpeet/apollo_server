@@ -68,8 +68,6 @@ export const getKimchiToken = async () => {
     password: "papapleto"
   };
 
-  console.log("auth-jwt KIMCHI");
-
   return fetch(`${baseURL}/auth-jwt/`, {
     method: "post",
     body: JSON.stringify(payload),

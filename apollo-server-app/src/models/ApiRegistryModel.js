@@ -9,12 +9,6 @@ class ResgitryKimchiApi extends RESTDataSource {
   // Set headers (Authorization Bearer)
   willSendRequest(request) {
     try {
-      this.context.extrakimchi.token;
-      console.log("KIMCHI_TOKEN");
-      console.log("this.context.extrakimchi");
-      console.log(this.context.extrakimchi);
-      console.log("this.context.extrakimchi.token");
-      console.log(this.context.extrakimchi.token);
       request.headers.set(
         "Authorization",
         `Bearer ${this.context.extrakimchi.token}`

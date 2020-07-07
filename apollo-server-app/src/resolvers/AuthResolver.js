@@ -16,16 +16,10 @@ const resolvers = {
       return result;
     },
     forgotPassword: async (_source, { input }, { dataSources }) => {
-      console.log("input");
-      console.log(input);
-
       const result = await dataSources.SrmAUTH.forgotPassword(input);
       return result;
     },
     confirmForgotPassword: async (_source, { input }, { dataSources }) => {
-      console.log("input");
-      console.log(input);
-
       const result = await dataSources.SrmAUTH.confirmChangePassword(input);
       return result;
     }

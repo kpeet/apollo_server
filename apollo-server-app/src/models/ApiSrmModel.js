@@ -187,10 +187,9 @@ class SrmAPI extends RESTDataSource {
 
     return confirmed_payment;
   }
+
   // Obtener cuenta bancaria del proveedor
-  async getProviderBankAccount(
-    provider_id
-  ) {
+  async getProviderBankAccount(provider_id) {
     const bank_account_list = await this.get(
       `providers/${provider_id}/bank_account/`
     );
@@ -199,62 +198,52 @@ class SrmAPI extends RESTDataSource {
 
     return bank_account_list;
   }
-    async newProviderBankAccount(
-        provider_id,
-        input
-    ) {
 
-      const payload = input;
-        const bank_account = await this.put(
-            `providers/${provider_id}/bank_account/`,
-            payload
-
-        );
-        console.log(JSON.stringify(bank_account));
-
-        return bank_account;
-    }
-
-    async getBank(
-    ) {
-        // TODO: modificar el page_size=1000 por sistema de paginado
-        const bank_list = await this.get(
-            `banks/?page_size=1000`
-        );
-
-
-        return bank_list;
-    }
-    async getBankAccountType(
-    ) {
-        // TODO: modificar el page_size=1000 por sistema de paginado
-        const bank_account_type_list = await this.get(
-            `bank_account_types/?page_size=1000`
-        );
-        console.log(JSON.stringify(bank_account_type_list));
-
-        return bank_account_type_list;
-    }
-
-    // Obtener lista de pagos confirmados por proveedor
-  // eslint-disable-next-line
-  advanceSimulation(confirmed_amount, monthly_discount, advance_days) {
-    const advance_amount = Math.ceil(
-      confirmed_amount / (1 + (monthly_discount / 30) * advance_days)
+  async newProviderBankAccount(provider_id, input) {
+    const payload = input;
+    const bank_account = await this.put(
+      `providers/${provider_id}/bank_account/`,
+      payload
     );
+    console.log(JSON.stringify(bank_account));
 
+    return bank_account;
+  }
+
+  async getBank() {
+    // TODO: modificar el page_size=1000 por sistema de paginado
+    const bank_list = await this.get(`banks/?page_size=1000`);
+
+    return bank_list;
+  }
+
+  async getBankAccountType() {
+    // TODO: modificar el page_size=1000 por sistema de paginado
+    const bank_account_type_list = await this.get(
+      `bank_account_types/?page_size=1000`
+    );
+    console.log(JSON.stringify(bank_account_type_list));
+
+    return bank_account_type_list;
+  }
+
+  // Obtener lista de pagos confirmados por proveedor
+  // eslint-disable-next-line
+    async advanceSimulation(confirmed_amount, monthly_discount, advance_days) {
     const payload = {
-      advance_amount
+      confirmed_amount,
+      monthly_discount,
+      advance_days
     };
-
-    return payload;
+    const simulation_result = await this.put(
+      `confirmed_payments/advance_simulation/`,
+      payload
+    );
+    return simulation_result;
   }
 
   // Crear Attempt de pago confirmado por Anticipo
   async createConfirmedPaymentAdvanceAttempt(input) {
-
-    console.log("createConfirmedPaymentAdvanceAttempt input");
-    console.log(input);
     const payload = {
       simulation: {
         confirmed_amount: input.simulation.confirmed_amount,
@@ -262,31 +251,24 @@ class SrmAPI extends RESTDataSource {
         advance_amount: input.simulation.advance_amount,
         advance_days: input.simulation.advance_days
       },
-        confirmed_payments:input.confirmed_payments,
-        bank_account: input.bank_account
+      confirmed_payments: input.confirmed_payments,
+      bank_account: input.bank_account
     };
-      console.log("createConfirmedPaymentAdvanceAttempt payload");
-      console.log(payload);
     const attemp_simulation = await this.put(
       `confirmed_payments/advance_attempt/`,
       payload
     );
 
-      console.log("createConfirmedPaymentAdvanceAttempt RESPONSE");
-      console.log(attemp_simulation);
-
     return attemp_simulation;
   }
-    async confirmedPaymentAttemptState(
-        state, confirmed_payment_attempt_id
-    ) {
-        const confirmed_payment_attempts_result = await this.post(
-            `confirmed_payment_attempts/${confirmed_payment_attempt_id}/${state}/`
-        );
-        console.log(JSON.stringify(confirmed_payment_attempts_result));
 
-        return confirmed_payment_attempts_result;
-    }
+  async confirmedPaymentAttemptState(state, confirmed_payment_attempt_id) {
+    const confirmed_payment_attempts_result = await this.post(
+      `confirmed_payment_attempts/${confirmed_payment_attempt_id}/${state}/`
+    );
+
+    return confirmed_payment_attempts_result;
+  }
 }
 
 export default SrmAPI;
