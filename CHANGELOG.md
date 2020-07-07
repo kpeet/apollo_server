@@ -21,6 +21,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Add account_type_name and bank_name on BankAccount Type[(41)]
 - Add mutation confirmedPaymentAttemptState and newProviderBankAccount [(4)]
 - Add query bank and bankAccountType [(4)]
+- Add advanceSimulation with api-srm [(4)]
 
 ### Changed
 - Change input of asssignRepresentativeToPayerEnterprise service [(29)]
