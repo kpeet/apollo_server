@@ -1,5 +1,5 @@
 - name: Deploy Development
-  tag: "feature/requester-kimchi-integ_test_devel"
+  tag: "devel"
   service: awsdeployment
   command: serverless deploy --stage development
 
