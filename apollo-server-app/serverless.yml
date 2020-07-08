@@ -13,6 +13,8 @@ provider:
   stage: ${opt:stage, 'development'}
   environment:
     API_SRM: https://api-srm.${self:provider.stage}.cumplo.cl
+    API_REGISTRY: https://api-registry-common.${self:provider.stage}.kimchi.cumplo.cl
+    API_BANKING: https://api-banks-cl.${self:provider.stage}.kimchi.cumplo.cl
 functions:
   graphql:
     handler: server.graphqlHandler

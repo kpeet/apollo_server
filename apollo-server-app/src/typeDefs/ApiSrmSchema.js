@@ -110,14 +110,33 @@ const apiSrmType = gql`
     account_type_name: String
   }
   type AdvanceAttempt {
-    id: ID,
-    created: String,
-    updated: String,
-    state: String,
-    message: String,
-    bank_account: Int,
-    user: Int,
+    id: ID
+    created: String
+    updated: String
+    state: String
+    message: String
+    bank_account: Int
+    user: Int
     confirmed_payments: [Int]
+  }
+  type Bank {
+    id: ID
+    created: String
+    updated: String
+    name: String
+    name_institution: String
+    bank_code: String
+    active: Boolean
+    bank_alias: Int
+  }
+  type BankAccountType {
+    id: ID
+    created: String
+    updated: String
+    type: String
+  }
+  type AttemptResponse {
+    message: String
   }
   input EnterpriseInput {
     name: String!
@@ -198,12 +217,24 @@ const apiSrmType = gql`
     advance_days: Int!
   }
   input AdvanceAttemptInput {
-    simulation:Simulation!
+    simulation: Simulation!
     confirmed_payments: [Int]!
     bank_account: Int!
   }
+  input AttemptStateInput {
+    attempt_id: Int!
+    state: String!
+  }
+  input BankAccountInput {
+    provider_id: ID!
+    account_number: String!
+    email: String!
+    account_holder_name: String!
+    account_holder_document_number: String!
+    bank: Int!
+    account_type: Int!
+  }
   type Query {
-    Services: Available
     representatives: [Representative]
     payerCompanyForRepresentative(
       input: RepresentantiveInput
@@ -219,10 +250,13 @@ const apiSrmType = gql`
     getPayerListFromProvider(input: payerProviderInput): [Enterprise]
     getProviderListFromPayer(input: payerProviderInput): [Enterprise]
     advanceSimulation(input: AdvanceSimulationInput): AdvanceSimulation
+    bank: [Bank]
+    bankAccountType: [BankAccountType]
   }
   extend type Mutation {
     enterprises(input: EnterpriseInput): Enterprise
     newEnterpriseProvider(enterprise_id: Int!): enterpriseAssociation
+    newProviderBankAccount(input: BankAccountInput): [BankAccount]
     newEnterprisePayer(enterprise_id: Int!): enterprisePayerAssociation
     asssignRepresentativeToPayerEnterprise(
       input: AssignPayerRepresentativeInput
@@ -239,6 +273,7 @@ const apiSrmType = gql`
       input: setRepresentativeFavoriteProviderInput
     ): Representative
     confirmedPaymentAdvanceAttempt(input: AdvanceAttemptInput): AdvanceAttempt
+    confirmedPaymentAttemptState(input: AttemptStateInput): AttemptResponse
   }
 `;
 

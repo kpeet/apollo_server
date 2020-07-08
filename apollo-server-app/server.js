@@ -3,7 +3,8 @@
 import { ApolloServer } from "apollo-server-lambda";
 import {
   RefreshTokenMiddleware,
-  setHeadersResponseMiddleware
+  setHeadersResponseMiddleware,
+  getKimchiToken
 } from "./src/middlewares/AuthTokenHandlerMiddleware";
 
 /* Here get yours class and functions from controllers */
@@ -14,6 +15,8 @@ import {
 } from "./src/controllers/AuthController";
 import {
   SrmAPI,
+  ResgitryKimchiApi,
+  BankingKimchiApi,
   TestResolver,
   TestSchema
 } from "./src/controllers/ApiSrmController";
@@ -35,16 +38,22 @@ const server = new ApolloServer({
   dataSources: () => ({
     /* Here subscribe yours dataSources */
     SrmAUTH: new SrmAUTH(),
-    SrmAPI: new SrmAPI()
+    SrmAPI: new SrmAPI(),
+    RegistryKimchiApi: new ResgitryKimchiApi(),
+    BankingKimchiApi: new BankingKimchiApi()
   }),
   context: async ({ event, context }) => {
     // Add middleware to context
     const extra = await RefreshTokenMiddleware(event);
     context = { ...context, extra };
+
+    const extrakimchi = await getKimchiToken();
+
     return {
       functionName: context.functionName,
       context,
-      extra
+      extra,
+      extrakimchi
     };
   },
   formatResponse: (response, context /* middleware after request */) =>
