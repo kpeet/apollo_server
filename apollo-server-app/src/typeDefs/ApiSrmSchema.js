@@ -89,6 +89,7 @@ const apiSrmType = gql`
     representative: Int
     state: String
     representative_document_number: String
+    attempt_type: String
   }
   type ConfirmedPaymentAndProviderBankAccounts {
     confirmed_payment_list: [ConfirmedPayment]
