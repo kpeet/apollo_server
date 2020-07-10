@@ -23,7 +23,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Add query bank and bankAccountType [(42)]
 - Add advanceSimulation with api-srm [(42)]
 - Add attempt_type filed to ConfirmedPayment Schema [(43)]
-- Add provider_business_name filed to ConfirmedPayment Schema [()]
+- Add provider_business_name filed to ConfirmedPayment Schema [(44)]
 
 ### Changed
 - Change input of asssignRepresentativeToPayerEnterprise service [(29)]
@@ -127,4 +127,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [(41)]: https://bitbucket.org/cumplo/srm-apollo-server/pull-requests/41/
 [(42)]: https://bitbucket.org/cumplo/srm-apollo-server/pull-requests/42/
 [(43)]: https://bitbucket.org/cumplo/srm-apollo-server/pull-requests/43/
-[()]: https://bitbucket.org/cumplo/srm-apollo-server/pull-requests//
+[(44)]: https://bitbucket.org/cumplo/srm-apollo-server/pull-requests/44/
