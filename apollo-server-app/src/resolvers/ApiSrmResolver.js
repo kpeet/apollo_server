@@ -111,6 +111,7 @@ const resolvers = {
           payment_date_filter,
           amount_filter
         );
+
         let bank_account = [];
         try {
           bank_account = await dataSources.SrmAPI.getProviderBankAccount(

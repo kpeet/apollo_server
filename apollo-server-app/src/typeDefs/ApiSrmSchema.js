@@ -83,6 +83,7 @@ const apiSrmType = gql`
     amount: Float
     payment_date: String
     provider_document_number: String
+    provider_business_name: String
     user: Int
     invoices: [Invoice]
     payer_provider: Int
